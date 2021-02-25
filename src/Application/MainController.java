@@ -29,7 +29,7 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Hello world");
+        System.out.println("Hello world 1");
     }
 
     @FXML
@@ -59,7 +59,7 @@ public class MainController implements Initializable {
         //Ouvrir la fichier et variable d'affectation du fichier choisi
         File selectedFile = fileChooser.showOpenDialog(Main.stage);
 
-        //Si un fichier est sélectionner
+        //Si un fichier est sélectionné
         if (selectedFile != null) {
 
             //nom complet du fichier
@@ -86,6 +86,15 @@ public class MainController implements Initializable {
 
 
     }
+
+    @FXML
+    public void nextSceneButton(ActionEvent e){
+        Main.stage.setTitle("deuxième page");
+        Main.stage.setScene(Main.scene2);
+
+    }
+
+
 
 
 

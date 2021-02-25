@@ -39,14 +39,12 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.MainController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Scene2Controller">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -70,7 +68,7 @@
          <children>
             <HBox prefHeight="25.0" prefWidth="640.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Titre de l'exercice scène 1: ">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Titre de l'exercice scène 2: ">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
@@ -78,32 +76,15 @@
                   <TextField />
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="47.0" prefHeight="25.0" prefWidth="640.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ressource video ou audio : ">
-                     <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </HBox.margin>
-                  </Text>
-                  <Button mnemonicParsing="false" onAction="#chooseFileAction" text="choisir un fichier" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;lien&gt;">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-            <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" layoutX="70.0" layoutY="86.0" />
             <HBox alignment="BOTTOM_RIGHT" layoutY="350.0" prefHeight="25.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="350.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#nextSceneButton" text="Suivant">
+                  <Button mnemonicParsing="false" onAction="#previousSceneAction" text="Précédent">
                      <HBox.margin>
                         <Insets bottom="10.0" right="10.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-            <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" layoutX="70.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
          </children>
     </AnchorPane>
   </children>
