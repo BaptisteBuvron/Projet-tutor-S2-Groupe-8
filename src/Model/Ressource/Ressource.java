@@ -10,8 +10,6 @@ public class Ressource implements Serializable {
     private String transcription;
 
 
-
-
     public byte[] getFileByte() {
         return fileByte;
     }

@@ -13,7 +13,7 @@ public class Main extends Application {
 
     public static Stage stage;
     public static Scene scene1;
-    public static Scene scene2;
+    //public static Scene scene2;
     public static Exercice exercice;
 
     public static void main(String args[]){
@@ -31,4 +31,5 @@ public class Main extends Application {
         stage.setMaximized(true);
         stage.show();
     }
+
 }

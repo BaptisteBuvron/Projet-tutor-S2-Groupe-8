@@ -96,6 +96,25 @@ public class MainController implements Initializable {
             switch (((RadioButton) modeExercice.getSelectedToggle()).getText()){
                 case "Entrainement":
                     Main.exercice = new ModeEntrainement();
+                    switch (((RadioButton) lettresMinimum.getSelectedToggle()).getText()){
+                        case "2 lettres minimum":
+                            ((ModeEntrainement)Main.exercice).setLettresMini(2);
+                            break;
+                        case "3 lettres minimum":
+                            ((ModeEntrainement)Main.exercice).setLettresMini(3);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if (affichageMotsDecouverts.isSelected()){
+                        ((ModeEntrainement)Main.exercice).setAffichageTempsReel(true);
+                    }
+                    if (affichageSolution.isSelected()){
+                        ((ModeEntrainement)Main.exercice).setAffichageSolution(true);
+
+                    }
+
                     break;
                 case "Evaluation":
                     Main.exercice = new ModeEvaluation();
@@ -124,6 +143,8 @@ public class MainController implements Initializable {
                     ((Audio )Main.exercice.getRessource()).setImage(image);
                 }
             }
+
+
 
             save();
 
