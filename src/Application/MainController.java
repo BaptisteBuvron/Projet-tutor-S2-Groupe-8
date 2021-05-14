@@ -129,7 +129,6 @@ public class MainController implements Initializable {
                 video.setFileName(selectedFile.getName());
                 video.setFileByte(Files.readAllBytes(selectedFile.toPath()));
                 Main.exercice.setRessource(video);
-                Main.exercice.getRessource().setTranscription(transcription.getText());
             }
             else if(extensionSelectedFile.equals("mp3")) {
                 Audio audio = new Audio();
@@ -143,6 +142,7 @@ public class MainController implements Initializable {
                     ((Audio )Main.exercice.getRessource()).setImage(image);
                 }
             }
+            Main.exercice.getRessource().setTranscription(transcription.getText());
 
 
 
