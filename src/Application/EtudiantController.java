@@ -64,49 +64,53 @@ public class EtudiantController implements Initializable {
 
     @FXML
     public void validerEssaie(){
-        String essai = saisie.getText().toLowerCase();
-        if (essai.length() >= 1){
-            for (int i = 0; i < tab.length; i++) {   // on verifie si le mot a essayer est dans la phrase
-                // System.out.println(tab[i]);
+        String[] essais = saisie.getText().toLowerCase().split("\\s");
+        for (String essai: essais){
+            if (essai.length() >= 1){
+                for (int i = 0; i < tab.length; i++) {   // on verifie si le mot a essayer est dans la phrase
+                    // System.out.println(tab[i]);
 
-                String motActuel = String.valueOf(tab[i]).toLowerCase();   // on met le mot de la phrase à verifier dans une nouvelle variable
-                //System.out.println(motActuel);
+                    String motActuel = String.valueOf(tab[i]).toLowerCase();   // on met le mot de la phrase à verifier dans une nouvelle variable
+                    //System.out.println(motActuel);
 
-                if (motActuel.equals(essai)) {  // si le le mot essayé est le mm alors il est remplacer dans la phrase occulté pr qu'on le voit
-                    tabOcult[i] = essai;
-                    //foundWords++;
-                    //System.out.println("nb de mots trouvé : " + foundWords);    // on affiche le nb de mot trouvé
-                }
-                else if (MainEtudiant.exercice instanceof ModeEntrainement){
-                    if((((ModeEntrainement) MainEtudiant.exercice).getLettresMini()) != null && essai.length()>=((ModeEntrainement) MainEtudiant.exercice).getLettresMini() && motActuel.startsWith(essai) && motActuel.length()>=4) {   // mais si ya un certain nb de lettre qui correspond au mot c'est bon aussi , c qd mm affiché
-                        String motIncomplet=essai;
-                        if (essai.length() > tabOcult[i].replace("#","").length()){
-                            for(int longmot=essai.length();longmot<motActuel.length();longmot++) {
-                                motIncomplet+=MainEtudiant.exercice.getCaractereOcculation();
-                            }
-                            tabOcult[i] = motIncomplet;
-                        }
-
+                    if (motActuel.equals(essai)) {  // si le le mot essayé est le mm alors il est remplacer dans la phrase occulté pr qu'on le voit
+                        tabOcult[i] = essai;
                         //foundWords++;
-                        //System.out.println("nb de mots trouvé : " + foundWords); // on affiche le nb de mot trtextouvé
+                        //System.out.println("nb de mots trouvé : " + foundWords);    // on affiche le nb de mot trouvé
                     }
+                    else if (MainEtudiant.exercice instanceof ModeEntrainement){
+                        if((((ModeEntrainement) MainEtudiant.exercice).getLettresMini()) != null && essai.length()>=((ModeEntrainement) MainEtudiant.exercice).getLettresMini() && motActuel.startsWith(essai) && motActuel.length()>=4) {   // mais si ya un certain nb de lettre qui correspond au mot c'est bon aussi , c qd mm affiché
+                            String motIncomplet=essai;
+                            if (essai.length() > tabOcult[i].replace("#","").length()){
+                                for(int longmot=essai.length();longmot<motActuel.length();longmot++) {
+                                    motIncomplet+=MainEtudiant.exercice.getCaractereOcculation();
+                                }
+                                tabOcult[i] = motIncomplet;
+                            }
+
+                            //foundWords++;
+                            //System.out.println("nb de mots trouvé : " + foundWords); // on affiche le nb de mot trtextouvé
+                        }
+                    }
+
+
+
+
+
+                    //System.out.println(tabOcult[i]);
                 }
+                String textTotal= "";
+                for (int i = 0; i < tab.length; i++) {
+                    textTotal+= tabOcult[i] + " ";
+                }
+                texteCache.setText(textTotal);
+                saisie.setText("");
 
 
-
-
-
-                //System.out.println(tabOcult[i]);
             }
-            String textTotal= "";
-            for (int i = 0; i < tab.length; i++) {
-                textTotal+= tabOcult[i] + " ";
-            }
-            texteCache.setText(textTotal);
-            saisie.setText("");
-
-
         }
+
+
 
     }
 
