@@ -12,9 +12,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ResourceBundle;
@@ -26,6 +29,8 @@ public class MainController implements Initializable {
     private String extensionSelectedFile;
 
     private File imageSelected;
+
+    private File selectedDirectory;
 
 
     @FXML
@@ -67,6 +72,12 @@ public class MainController implements Initializable {
     @FXML
     CheckBox affichageSolution;
 
+    @FXML
+    TextField occultation;
+
+    @FXML
+    Label linkFolder;
+
 
 
 
@@ -77,7 +88,16 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    public void saveAction(ActionEvent e) throws IOException, ClassNotFoundException {
+    public void chooseFolderAction(ActionEvent e){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        selectedDirectory = directoryChooser.showDialog(Main.stage);
+        linkFolder.setText(selectedDirectory.toURI().getPath());
+
+
+    }
+
+    @FXML
+    public void saveAction(ActionEvent e) throws IOException, ClassNotFoundException, URISyntaxException {
         if (nameExercice.getText().trim().isEmpty() || nameExercice.getText() == null) {
             System.out.println("Le titre de l'exercice est vide");
         }else if (selectedFile == null){
@@ -92,6 +112,13 @@ public class MainController implements Initializable {
         else if(aide.getText().trim().isEmpty() || aide.getText() == null){
             System.out.println("L'aide n'a pas été saisie");
         }
+        else if(occultation.getText().trim().isEmpty() || occultation.getText() == null || occultation.getText().length() > 1){
+            System.out.println("Le caractère d'occulation n'a pas été saisie ou est n'est pas correct");
+        }
+        else if(selectedDirectory == null){
+            System.out.println("Le dossier d'enregistrement n'a pas été saisie");
+        }
+
         else{
             switch (((RadioButton) modeExercice.getSelectedToggle()).getText()){
                 case "Entrainement":
@@ -123,6 +150,7 @@ public class MainController implements Initializable {
             Main.exercice.setName(nameExercice.getText());
             Main.exercice.setConsigne(consigne.getText());
             Main.exercice.setAide(aide.getText());
+            Main.exercice.setCaractereOcculation(occultation.getText());
 
             if (extensionSelectedFile.equals("mp4")){
                 Video video = new Video();
@@ -245,8 +273,11 @@ public class MainController implements Initializable {
 
     }
 
-    public void save() throws IOException {
-        FileOutputStream fileOut = new FileOutputStream("exercice.exercice");
+    public void save() throws IOException, URISyntaxException {
+
+
+        File newFile = new File(selectedDirectory, Main.exercice.getName()+".exercice");
+        FileOutputStream fileOut = new FileOutputStream(newFile);
         ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
         objectOut.writeObject(Main.exercice);
         objectOut.close();

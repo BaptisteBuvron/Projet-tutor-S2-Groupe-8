@@ -50,7 +50,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="756.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.MainController">
+<VBox prefHeight="937.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -70,7 +70,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="731.0" prefWidth="1093.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="824.0" prefWidth="1049.0" VBox.vgrow="ALWAYS">
          <children>
             <HBox prefHeight="25.0" prefWidth="937.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
                <children>
@@ -132,7 +132,7 @@
                   <TextArea fx:id="transcription" prefHeight="70.0" prefWidth="211.0" />
                </children>
             </HBox>
-            <HBox layoutX="33.0" layoutY="453.0" prefHeight="229.0" prefWidth="979.0">
+            <HBox layoutX="21.0" layoutY="593.0" prefHeight="229.0" prefWidth="979.0">
                <children>
                   <Label text="Mode :" />
                   <SplitPane dividerPositions="0.5" prefHeight="229.0" prefWidth="839.0">
@@ -205,6 +205,27 @@
                </children>
             </HBox>
             <Button layoutX="957.0" layoutY="692.0" mnemonicParsing="false" onAction="#saveAction" text="Sauvegarder" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+            <HBox layoutX="14.0" layoutY="843.0" prefHeight="25.0" prefWidth="937.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lien de sauvegarde">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Button mnemonicParsing="false" onAction="#chooseFolderAction" text="choisir un dossier" />
+                  <Label fx:id="linkFolder" text="&lt;lien&gt;" />
+               </children>
+            </HBox>
+            <HBox layoutX="21.0" layoutY="456.0" prefHeight="90.0" prefWidth="640.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Caractère occulation">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="occultation" />
+               </children>
+            </HBox>
          </children>
     </AnchorPane>
   </children>

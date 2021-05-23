@@ -1,7 +1,7 @@
 package Model;
 
 public class ModeEntrainement extends Exercice {
-    private int lettresMini;
+    private Integer lettresMini;
 
     private boolean affichageSolution = false;
     private boolean affichageTempsReel = false;
@@ -10,11 +10,11 @@ public class ModeEntrainement extends Exercice {
         super();
     }
 
-    public int getLettresMini() {
+    public Integer getLettresMini() {
         return lettresMini;
     }
 
-    public void setLettresMini(int lettresMini) {
+    public void setLettresMini(Integer lettresMini) {
         this.lettresMini = lettresMini;
     }
 

@@ -12,7 +12,7 @@ public class Exercice implements Serializable {
     private Ressource ressource;
     private String caractereOcculation;
     private int nbMotsDecouverts;
-    private int sensibiliteCase;
+    //private Integer sensibiliteCase;
     private String aide;
 
 
@@ -56,17 +56,12 @@ public class Exercice implements Serializable {
         return nbMotsDecouverts;
     }
 
-    public void setNbMotsDecouverts(int nbMotsDecouverts) {
+    public void setNbMotsDecouverts(Integer nbMotsDecouverts) {
         this.nbMotsDecouverts = nbMotsDecouverts;
     }
 
-    public int getSensibiliteCase() {
-        return sensibiliteCase;
-    }
 
-    public void setSensibiliteCase(int sensibiliteCase) {
-        this.sensibiliteCase = sensibiliteCase;
-    }
+
 
     public void setAide(String aide) {
         this.aide = aide;
