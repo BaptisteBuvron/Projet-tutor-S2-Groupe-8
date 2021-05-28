@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class ModeEntrainement extends Exercice {
     private Integer lettresMini;

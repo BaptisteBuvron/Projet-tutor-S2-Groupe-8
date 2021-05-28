@@ -1,6 +1,6 @@
-package Model;
+package model;
 
-import Model.Ressource.Ressource;
+import model.Ressource.Ressource;
 
 import java.io.Serializable;
 

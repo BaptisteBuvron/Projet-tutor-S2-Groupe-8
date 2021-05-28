@@ -1,11 +1,12 @@
-package Application;
+package controller;
 
-import Model.Exercice;
-import Model.ModeEntrainement;
-import Model.ModeEvaluation;
-import Model.Ressource.Audio;
-import Model.Ressource.Image;
-import Model.Ressource.Video;
+import Application.MainEnseignant;
+import model.Exercice;
+import model.ModeEntrainement;
+import model.ModeEvaluation;
+import model.Ressource.Audio;
+import model.Ressource.Image;
+import model.Ressource.Video;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -163,7 +164,7 @@ public class EnseignantController implements Initializable {
                 audio.setFileByte(Files.readAllBytes(selectedFile.toPath()));
                 MainEnseignant.exercice.setRessource(audio);
                 if (imageSelected != null){
-                    Model.Ressource.Image image = new Image();
+                    model.Ressource.Image image = new Image();
                     image.setFileByte(Files.readAllBytes(imageSelected.toPath()));
                     image.setFileName(imageSelected.getName());
                     ((Audio ) MainEnseignant.exercice.getRessource()).setImage(image);

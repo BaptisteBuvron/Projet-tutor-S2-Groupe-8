@@ -1,4 +1,4 @@
-package Model.Ressource;
+package model.Ressource;
 
 import java.io.Serializable;
 
