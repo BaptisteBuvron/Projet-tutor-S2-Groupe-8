@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Fichier">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Ouvrir un exercice" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Sauvegarder le travail" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Fermer l'exercice" />
+                  <RadioMenuItem mnemonicParsing="false" text="Quitter le logiciel" />
+            </items>
+          </Menu>
+          <Menu disable="true" mnemonicParsing="false" text="Solution">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Afficher la solution de l'exercice" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Fenêtre">
+            <items>
+              <MenuItem mnemonicParsing="false" text="640 x 480" />
+                  <MenuItem mnemonicParsing="false" text="800 x 600" />
+                  <MenuItem mnemonicParsing="false" text="Plein écran" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Options">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="Aide">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Obtenir de l'aide pour l'exercice" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="A propos">
+              <items>
+                <MenuItem mnemonicParsing="false" text="A propos du logiciel" />
+                  <MenuItem mnemonicParsing="false" text="Tutoriel - Prise en main du logiciel" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="73.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="328.0" minHeight="10.0" prefHeight="328.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="120.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button alignment="CENTER" contentDisplay="TOP" focusTraversable="false" graphicTextGap="10.0" layoutX="10.0" layoutY="96.0" mnemonicParsing="false" prefHeight="204.0" prefWidth="171.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="TUTORIEL" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="91.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Downloads/Dossier%20bordel/question.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="TOP" focusTraversable="false" graphicTextGap="10.0" layoutX="210.0" layoutY="96.0" mnemonicParsing="false" prefHeight="204.0" prefWidth="171.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="QUITTER" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="91.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Downloads/Dossier%20bordel/remove.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="TOP" focusTraversable="false" graphicTextGap="10.0" layoutX="225.0" layoutY="96.0" mnemonicParsing="false" prefHeight="204.0" prefWidth="171.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="OUVRIR" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="91.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Downloads/Dossier%20bordel/open-folder.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

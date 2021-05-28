@@ -22,7 +22,7 @@ public class MainEtudiant extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressources/fxml/InterfaceEtudiantEntrainement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ressources/fxml/etudiant/InterfaceEtudiantEntrainement.fxml"));
         Parent root1 = loader.load();
         //Parent root2 = FXMLLoader.load(getClass().getResource("/ressources/fxml/scene2.fxml"));
         EtudiantController controller = loader.getController();

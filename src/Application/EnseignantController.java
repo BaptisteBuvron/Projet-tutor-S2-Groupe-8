@@ -16,14 +16,13 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.*;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ResourceBundle;
 
 
-public class MainController implements Initializable {
+public class EnseignantController implements Initializable {
 
     private File selectedFile;
     private String extensionSelectedFile;
@@ -90,7 +89,7 @@ public class MainController implements Initializable {
     @FXML
     public void chooseFolderAction(ActionEvent e){
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        selectedDirectory = directoryChooser.showDialog(Main.stage);
+        selectedDirectory = directoryChooser.showDialog(MainEnseignant.stage);
         linkFolder.setText(selectedDirectory.toURI().getPath());
 
 
@@ -122,55 +121,55 @@ public class MainController implements Initializable {
         else{
             switch (((RadioButton) modeExercice.getSelectedToggle()).getText()){
                 case "Entrainement":
-                    Main.exercice = new ModeEntrainement();
+                    MainEnseignant.exercice = new ModeEntrainement();
                     switch (((RadioButton) lettresMinimum.getSelectedToggle()).getText()){
                         case "2 lettres minimum":
-                            ((ModeEntrainement)Main.exercice).setLettresMini(2);
+                            ((ModeEntrainement) MainEnseignant.exercice).setLettresMini(2);
                             break;
                         case "3 lettres minimum":
-                            ((ModeEntrainement)Main.exercice).setLettresMini(3);
+                            ((ModeEntrainement) MainEnseignant.exercice).setLettresMini(3);
                             break;
                         default:
                             break;
                     }
 
                     if (affichageMotsDecouverts.isSelected()){
-                        ((ModeEntrainement)Main.exercice).setAffichageTempsReel(true);
+                        ((ModeEntrainement) MainEnseignant.exercice).setAffichageTempsReel(true);
                     }
                     if (affichageSolution.isSelected()){
-                        ((ModeEntrainement)Main.exercice).setAffichageSolution(true);
+                        ((ModeEntrainement) MainEnseignant.exercice).setAffichageSolution(true);
 
                     }
 
                     break;
                 case "Evaluation":
-                    Main.exercice = new ModeEvaluation();
+                    MainEnseignant.exercice = new ModeEvaluation();
                     break;
             }
-            Main.exercice.setName(nameExercice.getText());
-            Main.exercice.setConsigne(consigne.getText());
-            Main.exercice.setAide(aide.getText());
-            Main.exercice.setCaractereOcculation(occultation.getText());
+            MainEnseignant.exercice.setName(nameExercice.getText());
+            MainEnseignant.exercice.setConsigne(consigne.getText());
+            MainEnseignant.exercice.setAide(aide.getText());
+            MainEnseignant.exercice.setCaractereOcculation(occultation.getText());
 
             if (extensionSelectedFile.equals("mp4")){
                 Video video = new Video();
                 video.setFileName(selectedFile.getName());
                 video.setFileByte(Files.readAllBytes(selectedFile.toPath()));
-                Main.exercice.setRessource(video);
+                MainEnseignant.exercice.setRessource(video);
             }
             else if(extensionSelectedFile.equals("mp3")) {
                 Audio audio = new Audio();
                 audio.setFileName(selectedFile.getName());
                 audio.setFileByte(Files.readAllBytes(selectedFile.toPath()));
-                Main.exercice.setRessource(audio);
+                MainEnseignant.exercice.setRessource(audio);
                 if (imageSelected != null){
                     Model.Ressource.Image image = new Image();
                     image.setFileByte(Files.readAllBytes(imageSelected.toPath()));
                     image.setFileName(imageSelected.getName());
-                    ((Audio )Main.exercice.getRessource()).setImage(image);
+                    ((Audio ) MainEnseignant.exercice.getRessource()).setImage(image);
                 }
             }
-            Main.exercice.getRessource().setTranscription(transcription.getText());
+            MainEnseignant.exercice.getRessource().setTranscription(transcription.getText());
 
 
 
@@ -192,7 +191,7 @@ public class MainController implements Initializable {
         );
         fileChooserImage.setTitle("Choisir une image d'illustration");
         imageSelected = null;
-        imageSelected = fileChooserImage.showOpenDialog(Main.stage);
+        imageSelected = fileChooserImage.showOpenDialog(MainEnseignant.stage);
         linkImage.setText(imageSelected.getName());
     }
 
@@ -213,7 +212,7 @@ public class MainController implements Initializable {
         fileChooser.setTitle("Choisir votre ressource");
 
         //Ouvrir la fichier et variable d'affectation du fichier choisi
-        selectedFile = fileChooser.showOpenDialog(Main.stage);
+        selectedFile = fileChooser.showOpenDialog(MainEnseignant.stage);
 
         //Si un fichier est sélectionné
         if (selectedFile != null) {
@@ -276,10 +275,10 @@ public class MainController implements Initializable {
     public void save() throws IOException, URISyntaxException {
 
 
-        File newFile = new File(selectedDirectory, Main.exercice.getName()+".exercice");
+        File newFile = new File(selectedDirectory, MainEnseignant.exercice.getName()+".exercice");
         FileOutputStream fileOut = new FileOutputStream(newFile);
         ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-        objectOut.writeObject(Main.exercice);
+        objectOut.writeObject(MainEnseignant.exercice);
         objectOut.close();
         System.out.println("Save success");
     }
@@ -289,7 +288,7 @@ public class MainController implements Initializable {
             FileInputStream fileInt = new FileInputStream("exercice.exercice");
             ObjectInputStream objectInt = new ObjectInputStream(fileInt);
             Object exercice = objectInt.readObject();
-            Main.exercice = (Exercice) exercice;
+            MainEnseignant.exercice = (Exercice) exercice;
             System.out.println("Success");
         }
         catch (FileNotFoundException e){
