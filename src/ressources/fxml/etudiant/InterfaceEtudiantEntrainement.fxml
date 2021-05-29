@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EtudiantController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.etudiant.EtudiantExerciceController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -29,15 +29,15 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Fichier">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#openExercice" text="Ouvrir un exercice" />
+                    <MenuItem mnemonicParsing="false" text="Ouvrir un exercice" />
                         <MenuItem mnemonicParsing="false" text="Sauvegarder le travail" />
                         <MenuItem mnemonicParsing="false" text="Fermer l'exercice" />
                         <MenuItem mnemonicParsing="false" text="Quitter l'application" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Solution">
+                <Menu fx:id="menuSolution" mnemonicParsing="false" text="Solution">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Afficher la solution de l'exercice" />
+                    <MenuItem fx:id="menuItemSolution" mnemonicParsing="false" onAction="#afficherSolution" text="Afficher la solution de l'exercice" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Fenêtre">
@@ -157,7 +157,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="44.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="AIDE" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+                        <Button fx:id="boutonAide" mnemonicParsing="false" onAction="#afficherAide" prefWidth="44.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="AIDE" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
                      </children>
                   </GridPane>
                </children>

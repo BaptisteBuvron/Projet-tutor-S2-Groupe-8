@@ -74,6 +74,7 @@ public class EtudiantSelectionnerExerciceController implements Initializable
                 alert.showAndWait();
             }
             if (MainEtudiant.exercice != null){
+                MainEtudiant.stage.setScene(MainEtudiant.saisirNom);
                 //TODO CHANGE SCENE, GO TO SELECT NAME OF THE STUDENT
 
             }
