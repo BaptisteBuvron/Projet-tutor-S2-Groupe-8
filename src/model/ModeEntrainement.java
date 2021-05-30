@@ -34,4 +34,6 @@ public class ModeEntrainement extends Exercice {
     public void setAffichageTempsReel(boolean affichageTempsReel) {
         this.affichageTempsReel = affichageTempsReel;
     }
+
+
 }

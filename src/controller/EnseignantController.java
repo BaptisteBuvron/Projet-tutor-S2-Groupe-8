@@ -82,6 +82,8 @@ public class EnseignantController implements Initializable {
 
 
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     	System.out.println("Branche Enseignant Baptiste");
@@ -137,8 +139,16 @@ public class EnseignantController implements Initializable {
                     if (affichageMotsDecouverts.isSelected()){
                         ((ModeEntrainement) MainEnseignant.exercice).setAffichageTempsReel(true);
                     }
+                    else {
+                        ((ModeEntrainement) MainEnseignant.exercice).setAffichageTempsReel(false);
+
+                    }
                     if (affichageSolution.isSelected()){
                         ((ModeEntrainement) MainEnseignant.exercice).setAffichageSolution(true);
+
+                    }
+                    else {
+                        ((ModeEntrainement) MainEnseignant.exercice).setAffichageSolution(false);
 
                     }
 

@@ -54,7 +54,7 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Aide">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Obtenir de l'aide pour l'exercice" />
+                      <MenuItem mnemonicParsing="false" onAction="#afficherAide" text="Obtenir de l'aide pour l'exercice" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="A propos">
@@ -192,16 +192,16 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                        <HBox fx:id="affichageTempsReel" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                            <children>
                               <Label style="-fx-font-weight: bold;" text="Mots découverts :">
                                  <HBox.margin>
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label text="00" />
+                              <Label fx:id="motsDecouverts" text="00" />
                               <Label text="/" />
-                              <Label text="00" />
+                              <Label fx:id="totalMots" text="00" />
                            </children>
                         </HBox>
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFAC4A; -fx-font-weight: bold;" text="PAUSE" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
