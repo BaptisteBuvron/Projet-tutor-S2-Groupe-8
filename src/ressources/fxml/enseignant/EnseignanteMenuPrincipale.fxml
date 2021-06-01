@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EtudiantController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.enseignant.EnseignanteMenuPrincipaleController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -20,9 +20,8 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Fichier">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#openExercice" text="Ouvrir un exercice" />
-                        <MenuItem mnemonicParsing="false" text="Sauvegarder le travail" />
-                        <MenuItem mnemonicParsing="false" text="Fermer l'exercice" />
+                    <MenuItem mnemonicParsing="false" onAction="#createExercice" text="Créer un exercice" />
+                        <MenuItem mnemonicParsing="false" text="Ouvrir un exercice" />
                         <MenuItem mnemonicParsing="false" text="Quitter l'application" />
                   </items>
                 </Menu>
@@ -33,16 +32,6 @@
                         <MenuItem mnemonicParsing="false" text="Plein écran" />
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="Options">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Aide">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Obtenir de l'aide pour l'exercice" />
-                    </items>
-                  </Menu>
                   <Menu mnemonicParsing="false" text="A propos">
                     <items>
                       <MenuItem mnemonicParsing="false" text="A propos du logiciel" />
@@ -65,7 +54,7 @@
    <center>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="validerButton" alignment="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="CREER" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="validerButton" onAction="#createExercice" alignment="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="CREER" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets left="25.0" right="25.0" />
                </HBox.margin>

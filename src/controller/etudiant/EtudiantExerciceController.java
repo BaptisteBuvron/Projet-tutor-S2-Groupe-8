@@ -155,8 +155,6 @@ public class EtudiantExerciceController implements Initializable {
                 System.out.println("\n");
                 texteCache.setText(textTotal);
                 saisie.setText("");
-
-
             }
         }
 
