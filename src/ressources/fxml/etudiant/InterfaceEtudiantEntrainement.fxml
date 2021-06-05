@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.EtudiantController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.etudiant.EtudiantExerciceController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -29,15 +29,15 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Fichier">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#openExercice" text="Ouvrir un exercice" />
+                    <MenuItem mnemonicParsing="false" text="Ouvrir un exercice" />
                         <MenuItem mnemonicParsing="false" text="Sauvegarder le travail" />
                         <MenuItem mnemonicParsing="false" text="Fermer l'exercice" />
                         <MenuItem mnemonicParsing="false" text="Quitter l'application" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Solution">
+                <Menu fx:id="menuSolution" mnemonicParsing="false" text="Solution">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Afficher la solution de l'exercice" />
+                    <MenuItem fx:id="menuItemSolution" mnemonicParsing="false" onAction="#afficherSolution" text="Afficher la solution de l'exercice" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Fenêtre">
@@ -54,7 +54,7 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Aide">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Obtenir de l'aide pour l'exercice" />
+                      <MenuItem mnemonicParsing="false" onAction="#afficherAide" text="Obtenir de l'aide pour l'exercice" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="A propos">
@@ -157,7 +157,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="44.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="AIDE" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+                        <Button fx:id="boutonAide" mnemonicParsing="false" onAction="#afficherAide" prefWidth="44.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="AIDE" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
                      </children>
                   </GridPane>
                </children>
@@ -192,16 +192,16 @@
                               </Label>
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                        <HBox fx:id="affichageTempsReel" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                            <children>
                               <Label style="-fx-font-weight: bold;" text="Mots découverts :">
                                  <HBox.margin>
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label text="00" />
+                              <Label fx:id="motsDecouverts" text="00" />
                               <Label text="/" />
-                              <Label text="00" />
+                              <Label fx:id="totalMots" text="00" />
                            </children>
                         </HBox>
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFAC4A; -fx-font-weight: bold;" text="PAUSE" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />

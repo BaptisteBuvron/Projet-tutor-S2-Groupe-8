@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Algo {
     public static void main(String[] args) {
 
-        String Texte = "   HELLO  it's a test and a text at the same time 4561 ";
+        String Texte = "   Le seul moyen de le stopper serait d’arrêter tous les ordinateurs, ce qui aurait les mêmes conséquences que de laisser Prélude lancer les bombes. Depuis longtemps, toutes les installations à risque étaient contrôlées par des ordinateurs. Si l’on stoppait les ordinateurs, les centrales nucléaires s’emballeraient, les silos nucléaires cracheraient leur mort sur toute la planète. Bien entendu, l’économie mondiale dirigée par la bourse, s’effondrerait. David ne savait plus quoi faire et, manifestement, tous les militaires présents dans la salle comptaient sur lui pour résoudre cette crise.";
         String TexteOcult;
         String essai;
         int foundWords = 0;

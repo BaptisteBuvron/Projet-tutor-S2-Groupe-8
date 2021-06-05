@@ -1,4 +1,4 @@
-package Model.Ressource;
+package model.Ressource;
 
 public class Audio extends Ressource {
     private Image image;

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class OccultationService {
     public static String occultation(String text,String caracOcult){

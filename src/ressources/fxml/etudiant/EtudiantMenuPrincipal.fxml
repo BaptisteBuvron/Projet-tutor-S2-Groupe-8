@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.etudiant.EtudiantMenuPrincipalController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Fichier">
             <items>
-              <MenuItem mnemonicParsing="false" text="Ouvrir un exercice" />
+              <MenuItem mnemonicParsing="false" onAction="#openExercice" text="Ouvrir un exercice" />
                   <MenuItem disable="true" mnemonicParsing="false" text="Sauvegarder le travail" />
                   <MenuItem disable="true" mnemonicParsing="false" text="Fermer l'exercice" />
                   <RadioMenuItem mnemonicParsing="false" text="Quitter le logiciel" />
@@ -93,7 +93,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" focusTraversable="false" graphicTextGap="10.0" layoutX="225.0" layoutY="96.0" mnemonicParsing="false" prefHeight="204.0" prefWidth="171.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="OUVRIR" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <Button alignment="CENTER" contentDisplay="TOP" focusTraversable="false" graphicTextGap="10.0" layoutX="225.0" layoutY="96.0" mnemonicParsing="false" onAction="#openExercice" prefHeight="204.0" prefWidth="171.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="OUVRIR" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <graphic>
                   <ImageView fitHeight="91.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>

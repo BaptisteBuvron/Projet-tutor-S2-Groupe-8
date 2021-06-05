@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.enseignant.EnseignanteEdition2Controller">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Fichier">
+                  <items>
+                        <MenuItem mnemonicParsing="false" text="Quitter l'application" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Fenêtre">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="640 x 480" />
+                        <MenuItem mnemonicParsing="false" text="800 x 600" />
+                        <MenuItem mnemonicParsing="false" text="Plein écran" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="A propos">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="A propos du logiciel" />
+                        <RadioMenuItem mnemonicParsing="false" text="Tutoriel - Prise en main du logiciel" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <Label style="-fx-font-weight: bold;" text="Menu &gt; Ouvrir &gt; Exercice &gt; Sélectionner Ressource &gt; Edition">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label style="-fx-font-weight: bold;" text="Saisir une consigne pour les étudiants :">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="consigne" prefHeight="115.0" prefWidth="675.0" />
+                  <Label style="-fx-font-weight: bold;" text="Saisir une transcription pour les étudiants :">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane>
+                    <content>
+                      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+                           <children>
+                              <TextArea fx:id="transcription" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="660.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+                  <Button mnemonicParsing="false" onAction="#valider" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="342.2" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="50.0" right="100.0" top="50.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets right="25.0" top="25.0" />
+               </padding>
+            </VBox>
+         </center>
+      </BorderPane>
+   </center>
+   <bottom>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label style="-fx-font-weight: bold;" text="Progresion :">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label style="-fx-font-weight: bold;" text="Etape 3/6" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="364.0" />
+               </VBox.margin>
+            </Label>
+            <ProgressBar prefWidth="801.0" progress="0.5" />
+         </children>
+         <padding>
+            <Insets top="100.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets left="25.0" right="25.0" />
+         </BorderPane.margin>
+      </VBox>
+   </bottom>
+</BorderPane>

@@ -1,9 +1,9 @@
-package Application;
+package controller;
 
-import Model.Exercice;
-import Model.ModeEntrainement;
-import Model.OccultationService;
-import Model.Ressource.Audio;
+import Application.MainEtudiant;
+import model.Exercice;
+import model.ModeEntrainement;
+import model.Ressource.Audio;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
