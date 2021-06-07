@@ -182,9 +182,9 @@
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label text="00" />
+                              <Label fx:id="minutes" text="00" />
                               <Label text=":" />
-                              <Label text="00" />
+                              <Label fx:id="secondes" text="00" />
                               <Label text="min">
                                  <HBox.margin>
                                     <Insets left="5.0" />

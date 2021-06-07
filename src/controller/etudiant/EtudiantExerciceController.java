@@ -1,7 +1,7 @@
 package controller.etudiant;
 
-import Application.MainEnseignant;
 import Application.MainEtudiant;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -29,6 +29,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Pattern;
 
 public class EtudiantExerciceController implements Initializable {
@@ -78,12 +80,22 @@ public class EtudiantExerciceController implements Initializable {
     @FXML
     private HBox affichageTempsReel;
 
+    @FXML
+    private Label minutes;
+
+    @FXML
+    private Label secondes;
+
+    private boolean timeFinish = false;
+
     private int nbMots;
 
     private int totalmotsDecouverts = 0;
 
     private String[] tab;                 // on met la phrase ds un tableau en separant chaque mot
     private String[] tabOcult;
+
+    private long start;
 
 
     @Override
@@ -100,6 +112,34 @@ public class EtudiantExerciceController implements Initializable {
                 }
             }
         });
+    }
+
+    public void updateChronometer(){
+        long end = System.currentTimeMillis();
+
+        long time = end -start;
+        long minutesTime = (time / 1000) / 60;
+
+        // formula for conversion for
+        // milliseconds to seconds
+        long secondsTime = (time / 1000) % 60;
+        if (MainEtudiant.exercice instanceof ModeEvaluation){
+            int timeAutorise = ((ModeEvaluation) MainEtudiant.exercice).getTempsAutorise();
+            int totalSeconds = (int) ((int) (minutesTime*60) + secondsTime);
+            if (totalSeconds > timeAutorise){
+                timeFinish = true;
+            }
+            else {
+                int timeRemain = timeAutorise - totalSeconds;
+                secondes.setText(String.valueOf(timeRemain % 60));
+                minutes.setText(String.valueOf(timeRemain / 60));
+            }
+        }
+        else {
+            minutes.setText(String.valueOf(minutesTime));
+            secondes.setText(String.valueOf(secondsTime));
+        }
+
     }
 
     @FXML
@@ -183,9 +223,9 @@ public class EtudiantExerciceController implements Initializable {
             menuItemSolution.setDisable(true);
             menuSolution.setDisable(true);
             affichageTempsReel.setVisible(false);
-        }
 
-        if (MainEtudiant.exercice instanceof ModeEntrainement) {
+        }
+        else if (MainEtudiant.exercice instanceof ModeEntrainement) {
             if ( !((ModeEntrainement) MainEtudiant.exercice).isAffichageSolution()){
                 menuItemSolution.setDisable(true);
                 menuSolution.setDisable(true);
@@ -195,6 +235,17 @@ public class EtudiantExerciceController implements Initializable {
                 affichageTempsReel.setVisible(false);
             }
         }
+        start = System.currentTimeMillis();
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() ->{
+                    updateChronometer();
+                });
+
+            }
+        }, 0, 1000);
 
         texteCache.setText(MainEtudiant.exercice.getRessource().getTranscription().replaceAll("[a-zA-Z0-9]", MainEtudiant.exercice.getCaractereOcculation()));
         tab = MainEtudiant.exercice.getRessource().getTranscription().split("(\\s|\\.|,|;|\"|\\)|\\()");
