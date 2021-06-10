@@ -24,6 +24,7 @@ public class MainEnseignant extends Application {
     public static Scene edition2;
     public static Scene option;
     public static Scene sauvegarder;
+    public static Scene ecranFinal;
 
 
     public static Stage creationExercice = new Stage();
@@ -46,6 +47,7 @@ public class MainEnseignant extends Application {
         edition2 = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteEdition2.fxml")));
         option = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteOption.fxml")));
         sauvegarder = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteSauvegarde.fxml")));
+        ecranFinal = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteEcranFinal.fxml")));
 
         Parent root1 = FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignanteDeprecated.fxml"));
         //Parent root2 = FXMLLoader.load(getClass().getResource("/ressources/fxml/scene2.fxml"));

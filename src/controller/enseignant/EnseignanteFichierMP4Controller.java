@@ -93,4 +93,9 @@ public class EnseignanteFichierMP4Controller implements Initializable {
 
         }
     }
+
+    public void retour(ActionEvent event) {
+        MainEnseignant.stage.setScene(MainEnseignant.nomExercice);
+
+    }
 }

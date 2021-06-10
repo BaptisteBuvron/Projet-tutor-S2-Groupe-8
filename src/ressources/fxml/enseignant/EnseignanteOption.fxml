@@ -12,6 +12,8 @@
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -59,6 +61,15 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
                <children>
+                  <Button mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="Retour" textAlignment="CENTER" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/return.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <Label style="-fx-font-weight: bold;" text="Option :">
                      <font>
                         <Font size="16.0" />

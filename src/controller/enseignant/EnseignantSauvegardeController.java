@@ -35,13 +35,8 @@ public class EnseignantSauvegardeController implements Initializable {
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(MainEnseignant.exercice);
             objectOut.close();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Enregistrement !");
-            alert.setHeaderText("Enregistrement de l'exericice.");
-            alert.setContentText("L'exercice a été créer et enregistré.");
-            alert.showAndWait();
             MainEnseignant.reset();
-            MainEnseignant.stage.setScene(MainEnseignant.menuPrincipal);
+            MainEnseignant.stage.setScene(MainEnseignant.ecranFinal);
         }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -60,5 +55,9 @@ public class EnseignantSauvegardeController implements Initializable {
         selectedDirectory = null;
         selectedDirectory = directoryChooser.showDialog(MainEnseignant.stage);
         linkFolder.setText(selectedDirectory.toURI().getPath());
+    }
+
+    public void retour(ActionEvent event) {
+        MainEnseignant.stage.setScene(MainEnseignant.option);
     }
 }

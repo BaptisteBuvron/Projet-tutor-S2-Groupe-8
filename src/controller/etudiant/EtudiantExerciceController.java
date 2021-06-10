@@ -114,37 +114,43 @@ public class EtudiantExerciceController implements Initializable {
         });
     }
 
-    public void updateChronometer(){
+    public void updateChronometer() {
         long end = System.currentTimeMillis();
 
-        long time = end -start;
+        long time = end - start;
         long minutesTime = (time / 1000) / 60;
 
         // formula for conversion for
         // milliseconds to seconds
         long secondsTime = (time / 1000) % 60;
-        if (MainEtudiant.exercice instanceof ModeEvaluation){
+        if (MainEtudiant.exercice instanceof ModeEvaluation) {
             int timeAutorise = ((ModeEvaluation) MainEtudiant.exercice).getTempsAutorise();
-            int totalSeconds = (int) ((int) (minutesTime*60) + secondsTime);
-            if (totalSeconds > timeAutorise){
+            int totalSeconds = (int) ((int) (minutesTime * 60) + secondsTime);
+            if (totalSeconds > timeAutorise) {
                 timeFinish = true;
-                mediaPlayer.stop();
-                MainEtudiant.modeExercice.close();
-                MainEtudiant.stage.setScene(MainEtudiant.enregister);
-                MainEtudiant.stage.centerOnScreen();
-                MainEtudiant.stage.show();
-            }
-            else {
+                saveExercice();
+            } else {
                 int timeRemain = timeAutorise - totalSeconds;
                 secondes.setText(String.valueOf(timeRemain % 60));
                 minutes.setText(String.valueOf(timeRemain / 60));
             }
-        }
-        else {
+        } else {
             minutes.setText(String.valueOf(minutesTime));
             secondes.setText(String.valueOf(secondsTime));
         }
 
+    }
+
+    public void saveExercice() {
+        MainEtudiant.etudiant.setMotTrouve(totalmotsDecouverts);
+        MainEtudiant.etudiant.setTotalMot(Integer.parseInt(totalMots.getText()));
+        MainEtudiant.etudiant.setTextTrouve(texteCache.getText());
+        MainEtudiant.etudiant.setNomExercice(MainEtudiant.exercice.getName());
+        mediaPlayer.stop();
+        MainEtudiant.modeExercice.close();
+        MainEtudiant.stage.setScene(MainEtudiant.enregister);
+        MainEtudiant.stage.centerOnScreen();
+        MainEtudiant.stage.show();
     }
 
     @FXML
@@ -225,14 +231,13 @@ public class EtudiantExerciceController implements Initializable {
             menuSolution.setDisable(true);
             affichageTempsReel.setVisible(false);
 
-        }
-        else if (MainEtudiant.exercice instanceof ModeEntrainement) {
-            if ( !((ModeEntrainement) MainEtudiant.exercice).isAffichageSolution()){
+        } else if (MainEtudiant.exercice instanceof ModeEntrainement) {
+            if (!((ModeEntrainement) MainEtudiant.exercice).isAffichageSolution()) {
                 menuItemSolution.setDisable(true);
                 menuSolution.setDisable(true);
             }
 
-            if (!((ModeEntrainement)MainEtudiant.exercice).isAffichageTempsReel()){
+            if (!((ModeEntrainement) MainEtudiant.exercice).isAffichageTempsReel()) {
                 affichageTempsReel.setVisible(false);
             }
         }
@@ -241,19 +246,19 @@ public class EtudiantExerciceController implements Initializable {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Platform.runLater(() ->{
+                Platform.runLater(() -> {
                     updateChronometer();
                 });
 
             }
         }, 0, 1000);
 
-        String textCacheOcult =MainEtudiant.exercice.getRessource().getTranscription().replaceAll("[a-zA-Z0-9]", MainEtudiant.exercice.getCaractereOcculation());
+        String textCacheOcult = MainEtudiant.exercice.getRessource().getTranscription().replaceAll("[a-zA-Z0-9]", MainEtudiant.exercice.getCaractereOcculation());
         tab = MainEtudiant.exercice.getRessource().getTranscription().split("(\\s|\\.|,|;|\"|\\)|\\(|'|:|\\[|`|]|\\{|})");
         nbMots = 0;
         for (int i = 0; i < tab.length; i++) {
             System.out.println(tab[i]);
-            if (!tab[i].equals("")){
+            if (!tab[i].equals("")) {
                 nbMots++;
             }
         }

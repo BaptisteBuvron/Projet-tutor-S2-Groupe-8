@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import model.Exercice;
 import model.ModeEntrainement;
 import model.ModeEvaluation;
 import model.Ressource.Audio;
@@ -55,8 +56,10 @@ public class EnseignanteOptionController implements Initializable {
             alert.showAndWait();
             error = true;
         } else {
+            Exercice copieExercice = MainEnseignant.exercice;
             switch (((RadioButton) modeExercice.getSelectedToggle()).getText()) {
-                case "Entrainement":
+                case "Mode Entrainement":
+                    MainEnseignant.exercice = new ModeEntrainement();
                     switch (((RadioButton) lettresMinimum.getSelectedToggle()).getText()) {
                         case "2 lettres minimum":
                             ((ModeEntrainement) MainEnseignant.exercice).setLettresMini(2);
@@ -83,7 +86,8 @@ public class EnseignanteOptionController implements Initializable {
                     }
 
                     break;
-                case "Evaluation":
+                case "Mode Evaluation":
+                    MainEnseignant.exercice = new ModeEvaluation();
                     if (limiteTemps.getText().matches("^[1-9]\\d*$")){
                         ((ModeEvaluation) MainEnseignant.exercice).setTempsAutorise(Integer.parseInt(limiteTemps.getText()));
 
@@ -99,11 +103,21 @@ public class EnseignanteOptionController implements Initializable {
                     break;
             }
             if (!error){
+                MainEnseignant.exercice.setAide(copieExercice.getAide());
+                MainEnseignant.exercice.setConsigne(copieExercice.getConsigne());
+                MainEnseignant.exercice.setName(copieExercice.getName());
+                MainEnseignant.exercice.setCaractereOcculation(copieExercice.getCaractereOcculation());
+                MainEnseignant.exercice.setRessource(copieExercice.getRessource());
                 MainEnseignant.exercice.setCaractereOcculation(occultation.getText());
                 MainEnseignant.stage.setScene(MainEnseignant.sauvegarder);
             }
 
 
         }
+    }
+
+    public void retour(ActionEvent event) {
+        MainEnseignant.stage.setScene(MainEnseignant.edition2);
+
     }
 }

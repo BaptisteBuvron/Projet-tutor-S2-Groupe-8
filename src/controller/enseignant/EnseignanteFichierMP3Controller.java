@@ -62,7 +62,6 @@ public class EnseignanteFichierMP3Controller implements Initializable {
         fileChooserImage.setTitle("Choisir une image d'illustration");
         imageSelected = null;
         imageSelected = fileChooserImage.showOpenDialog(MainEnseignant.stage);
-        lienFichier.setText(imageSelected.getName());
 
         //Si un fichier est sélectionné
         if (imageSelected != null) {
@@ -79,5 +78,7 @@ public class EnseignanteFichierMP3Controller implements Initializable {
     }
 
 
-
+    public void retour(ActionEvent event) {
+        MainEnseignant.stage.setScene(MainEnseignant.fichierMP4);
+    }
 }

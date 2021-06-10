@@ -22,7 +22,6 @@ public class EnseignanteSaisieNomExercice implements Initializable {
     }
 
     public void validName(ActionEvent event){
-        MainEnseignant.exercice = new Exercice();
         if (nomExercice.getText().trim().isEmpty() || nomExercice.getText() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Attention !");
@@ -36,4 +35,8 @@ public class EnseignanteSaisieNomExercice implements Initializable {
     }
 
 
+    public void retour(ActionEvent event) {
+        MainEnseignant.stage.setScene(MainEnseignant.menuPrincipal);
+
+    }
 }
