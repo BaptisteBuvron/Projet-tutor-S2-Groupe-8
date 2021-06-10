@@ -73,7 +73,7 @@
                <graphic>
                   <ImageView fitHeight="91.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Downloads/Dossier%20bordel/question.png" />
+                        <Image url="@../../images/question.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -85,7 +85,7 @@
                <graphic>
                   <ImageView fitHeight="91.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Downloads/Dossier%20bordel/remove.png" />
+                        <Image url="@../../images/remove.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -97,7 +97,7 @@
                <graphic>
                   <ImageView fitHeight="91.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Downloads/Dossier%20bordel/open-folder.png" />
+                        <Image url="@../../images/open-folder.png" />
                      </image>
                   </ImageView>
                </graphic>

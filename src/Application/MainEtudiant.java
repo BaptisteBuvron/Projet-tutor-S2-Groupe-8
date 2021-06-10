@@ -20,6 +20,8 @@ public class MainEtudiant extends Application {
 
     public static Scene saisirNom;
 
+    public static Scene enregister;
+
     public static Stage modeExercice = new Stage();
 
     public static Etudiant etudiant = new Etudiant();
@@ -44,11 +46,12 @@ public class MainEtudiant extends Application {
         saisirNom = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/etudiant/EtudiantSaisirNom.fxml")),600,400);
 
         modeExercice.setScene(new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/etudiant/InterfaceEtudiantEntrainement.fxml"))));
+        enregister = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/etudiant/EtudiantSauvegarderExercice.fxml")));
 
 
         //Parent root1 = FXMLLoader.load(getClass().getResource("/ressources/fxml/etudiant/InterfaceEtudiantEntrainement.fxml"));
         //Parent root2 = FXMLLoader.load(getClass().getResource("/ressources/fxml/scene2.fxml"));
-        stage.setTitle("Faire un exercice");
+        stage.setTitle("Transcription");
         //scene1 = new Scene(root1);
 
         stage.setScene(menuPrincipal);

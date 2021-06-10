@@ -12,9 +12,6 @@ import java.util.ResourceBundle;
 
 public class EnseignanteEdition2Controller implements Initializable {
 
-    @FXML
-    private TextArea consigne;
-
 
     @FXML
     private TextArea transcription;
@@ -27,14 +24,8 @@ public class EnseignanteEdition2Controller implements Initializable {
 
 
     public void valider(ActionEvent event) {
-        if(consigne.getText().trim().isEmpty() || consigne.getText() == null){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Attention !");
-            alert.setHeaderText("Consigne  manquante.");
-            alert.setContentText("Vous n'avez pas saisie de consigne pour l'exercice.");
-            alert.showAndWait();
-        }
-        else if (transcription.getText().trim().isEmpty() || transcription.getText() == null){
+
+        if (transcription.getText().trim().isEmpty() || transcription.getText() == null){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Attention !");
             alert.setHeaderText("Transcription  manquante.");
@@ -42,10 +33,14 @@ public class EnseignanteEdition2Controller implements Initializable {
             alert.showAndWait();
         }
         else {
-            MainEnseignant.exercice.setConsigne(consigne.getText());
             MainEnseignant.exercice.getRessource().setTranscription(transcription.getText());
             MainEnseignant.stage.setScene(MainEnseignant.option);
 
         }
+    }
+
+    public void retour(ActionEvent event) {
+        MainEnseignant.stage.setScene(MainEnseignant.edition1);
+
     }
 }

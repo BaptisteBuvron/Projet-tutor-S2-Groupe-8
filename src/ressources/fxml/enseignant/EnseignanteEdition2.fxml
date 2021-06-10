@@ -10,6 +10,8 @@
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -57,12 +59,15 @@
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label style="-fx-font-weight: bold;" text="Saisir une consigne pour les étudiants :">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <TextArea fx:id="consigne" prefHeight="115.0" prefWidth="675.0" />
+                  <Button mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="Retour" textAlignment="CENTER" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="22.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/return.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <Label style="-fx-font-weight: bold;" text="Saisir une transcription pour les étudiants :">
                      <font>
                         <Font size="20.0" />

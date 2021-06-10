@@ -13,6 +13,9 @@ import java.util.ResourceBundle;
 public class EnseignanteEdition1Controller implements Initializable {
 
     @FXML
+    private TextArea consigne;
+
+    @FXML
     private TextArea aide;
 
 
@@ -23,7 +26,14 @@ public class EnseignanteEdition1Controller implements Initializable {
 
 
     public void validerAide(ActionEvent event) {
-        if(aide.getText().trim().isEmpty() || aide.getText() == null){
+        if(consigne.getText().trim().isEmpty() || consigne.getText() == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Attention !");
+            alert.setHeaderText("Consigne  manquante.");
+            alert.setContentText("Vous n'avez pas saisie de consigne pour l'exercice.");
+            alert.showAndWait();
+        }
+        else if(aide.getText().trim().isEmpty() || aide.getText() == null){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Attention !");
             alert.setHeaderText("Aide manquante.");
@@ -31,8 +41,13 @@ public class EnseignanteEdition1Controller implements Initializable {
             alert.showAndWait();
         }
         else {
-            MainEnseignant.exercice.setName(aide.getText());
+            MainEnseignant.exercice.setAide(aide.getText());
+            MainEnseignant.exercice.setConsigne(consigne.getText());
             MainEnseignant.stage.setScene(MainEnseignant.edition2);
         }
+    }
+
+    public void retour(ActionEvent event) {
+        MainEnseignant.stage.setScene(MainEnseignant.fichierMP4);
     }
 }

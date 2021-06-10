@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import model.Exercice;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,4 +35,8 @@ public class EnseignanteSaisieNomExercice implements Initializable {
     }
 
 
+    public void retour(ActionEvent event) {
+        MainEnseignant.stage.setScene(MainEnseignant.menuPrincipal);
+
+    }
 }

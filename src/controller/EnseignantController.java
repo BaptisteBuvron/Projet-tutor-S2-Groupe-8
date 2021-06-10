@@ -155,6 +155,7 @@ public class EnseignantController implements Initializable {
                     break;
                 case "Evaluation":
                     MainEnseignant.exercice = new ModeEvaluation();
+                    ((ModeEvaluation )MainEnseignant.exercice).setTempsAutorise(Integer.parseInt(limiteTemps.getText()));
                     break;
             }
             MainEnseignant.exercice.setName(nameExercice.getText());
