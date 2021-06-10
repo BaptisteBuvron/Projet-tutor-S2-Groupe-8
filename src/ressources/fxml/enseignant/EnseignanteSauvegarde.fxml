@@ -13,20 +13,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EtudiantController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.enseignant.EnseignantSauvegardeController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Fichier">
-                  <items>
-                    <MenuItem mnemonicParsing="false" onAction="#openExercice" text="Ouvrir un exercice" />
-                        <MenuItem mnemonicParsing="false" text="Sauvegarder le travail" />
-                        <MenuItem mnemonicParsing="false" text="Fermer l'exercice" />
-                        <MenuItem mnemonicParsing="false" text="Quitter l'application" />
-                  </items>
-                </Menu>
                 <Menu mnemonicParsing="false" text="Fenêtre">
                   <items>
                     <MenuItem mnemonicParsing="false" text="640 x 480" />
@@ -34,16 +26,6 @@
                         <MenuItem mnemonicParsing="false" text="Plein écran" />
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="Options">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Aide">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Obtenir de l'aide pour l'exercice" />
-                    </items>
-                  </Menu>
                   <Menu mnemonicParsing="false" text="A propos">
                     <items>
                       <MenuItem mnemonicParsing="false" text="A propos du logiciel" />
@@ -73,8 +55,8 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField />
-                  <Button mnemonicParsing="false" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="SAUVEGARDER" textAlignment="CENTER" textFill="WHITE">
+                  <TextField fx:id="linkFolder" />
+                  <Button mnemonicParsing="false" onAction="#sauvegarder" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="SAUVEGARDER" textAlignment="CENTER" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="323.8" />
                      </VBox.margin>
@@ -91,7 +73,7 @@
          <right>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="PARCOURIR" textAlignment="CENTER" textFill="WHITE" />
+                  <Button mnemonicParsing="false" onAction="#parcourir" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="PARCOURIR" textAlignment="CENTER" textFill="WHITE" />
                </children>
                <BorderPane.margin>
                   <Insets />

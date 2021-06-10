@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import model.Exercice;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +22,7 @@ public class EnseignanteSaisieNomExercice implements Initializable {
     }
 
     public void validName(ActionEvent event){
+        MainEnseignant.exercice = new Exercice();
         if (nomExercice.getText().trim().isEmpty() || nomExercice.getText() == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Attention !");

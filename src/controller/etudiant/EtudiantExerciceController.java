@@ -128,6 +128,11 @@ public class EtudiantExerciceController implements Initializable {
             int totalSeconds = (int) ((int) (minutesTime*60) + secondsTime);
             if (totalSeconds > timeAutorise){
                 timeFinish = true;
+                mediaPlayer.stop();
+                MainEtudiant.modeExercice.close();
+                MainEtudiant.stage.setScene(MainEtudiant.enregister);
+                MainEtudiant.stage.centerOnScreen();
+                MainEtudiant.stage.show();
             }
             else {
                 int timeRemain = timeAutorise - totalSeconds;
@@ -188,10 +193,6 @@ public class EtudiantExerciceController implements Initializable {
                 for (int i = 0; i < tab.length; i++) {
                     textTotal += tabOcult[i] + " ";
                 }
-
-                for (int i = 0; i < tab.length; i++) {
-                    System.out.print(tabOcult[i] + " ");  // réaffiche le texte occulté avec les nouvelle partie révélé
-                }
                 System.out.println("\n");
                 texteCache.setText(textTotal);
                 saisie.setText("");
@@ -247,11 +248,23 @@ public class EtudiantExerciceController implements Initializable {
             }
         }, 0, 1000);
 
-        texteCache.setText(MainEtudiant.exercice.getRessource().getTranscription().replaceAll("[a-zA-Z0-9]", MainEtudiant.exercice.getCaractereOcculation()));
-        tab = MainEtudiant.exercice.getRessource().getTranscription().split("(\\s|\\.|,|;|\"|\\)|\\()");
-        nbMots = tab.length - 1;
+        String textCacheOcult =MainEtudiant.exercice.getRessource().getTranscription().replaceAll("[a-zA-Z0-9]", MainEtudiant.exercice.getCaractereOcculation());
+        tab = MainEtudiant.exercice.getRessource().getTranscription().split("(\\s|\\.|,|;|\"|\\)|\\(|'|:|\\[|`|]|\\{|})");
+        nbMots = 0;
+        for (int i = 0; i < tab.length; i++) {
+            System.out.println(tab[i]);
+            if (!tab[i].equals("")){
+                nbMots++;
+            }
+        }
+
         totalMots.setText(String.valueOf(nbMots));
-        tabOcult = texteCache.getText().split("(\\s|\\.|,|;|\"|\\)|\\()");
+        tabOcult = textCacheOcult.split("(\\s|\\.|,|;|\"|\\)|\\(|'|:|\\[|`|]|\\{|})");
+        String textTotal = "";
+        for (int i = 0; i < tab.length; i++) {
+            textTotal += tabOcult[i] + " ";
+        }
+        texteCache.setText(textTotal);
         System.out.println(Arrays.toString(tab));
         System.out.println(Arrays.toString(tabOcult));
 

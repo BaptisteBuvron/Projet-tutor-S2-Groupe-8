@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class MainEnseignant extends Application {
 
     public static Stage stage;
@@ -21,6 +23,7 @@ public class MainEnseignant extends Application {
     public static Scene edition1;
     public static Scene edition2;
     public static Scene option;
+    public static Scene sauvegarder;
 
 
     public static Stage creationExercice = new Stage();
@@ -42,15 +45,27 @@ public class MainEnseignant extends Application {
         edition1 = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteEdition1.fxml")));
         edition2 = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteEdition2.fxml")));
         option = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteOption.fxml")));
-
+        sauvegarder = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteSauvegarde.fxml")));
 
         Parent root1 = FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignanteDeprecated.fxml"));
         //Parent root2 = FXMLLoader.load(getClass().getResource("/ressources/fxml/scene2.fxml"));
         stage.setTitle("Créer un exercice");
         scene1 = new Scene(root1);
-        stage.setScene(scene1);
+        stage.setScene(menuPrincipal);
         //stage.setMaximized(true);
         stage.show();
+    }
+
+    public static void reset() throws IOException {
+        menuPrincipal = new Scene(FXMLLoader.load(MainEnseignant.class.getResource("/ressources/fxml/enseignant/EnseignanteMenuprincipale.fxml")),600,400);
+        nomExercice = new Scene(FXMLLoader.load(MainEnseignant.class.getResource("/ressources/fxml/enseignant/EnseignanteSaisieNomExercice.fxml")));
+        fichierMP4 = new Scene(FXMLLoader.load(MainEnseignant.class.getResource("/ressources/fxml/enseignant/EnseignanteFichierMP4.fxml")));
+        fichierMP3 = new Scene(FXMLLoader.load(MainEnseignant.class.getResource("/ressources/fxml/enseignant/EnseignanteFichierMP3.fxml")));
+        edition1 = new Scene(FXMLLoader.load(MainEnseignant.class.getResource("/ressources/fxml/enseignant/EnseignanteEdition1.fxml")));
+        edition2 = new Scene(FXMLLoader.load(MainEnseignant.class.getResource("/ressources/fxml/enseignant/EnseignanteEdition2.fxml")));
+        option = new Scene(FXMLLoader.load(MainEnseignant.class.getResource("/ressources/fxml/enseignant/EnseignanteOption.fxml")));
+        sauvegarder = new Scene(FXMLLoader.load(MainEnseignant.class.getResource("/ressources/fxml/enseignant/EnseignanteSauvegarde.fxml")));
+        stage.setScene(menuPrincipal);
     }
 
 }

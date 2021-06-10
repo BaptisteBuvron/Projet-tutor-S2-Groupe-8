@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,9 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="328.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="328.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.etudiant.EtudiantSauvegarderExerciceController">
    <center>
-      <GridPane hgap="10.0" prefWidth="600.0" vgap="10.0" BorderPane.alignment="CENTER">
+      <GridPane hgap="10.0" prefHeight="273.0" prefWidth="664.0" vgap="10.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -29,51 +28,38 @@
             <RowConstraints maxHeight="255.0" minHeight="10.0" prefHeight="99.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label style="-fx-font-weight: bold;" text="Sauvegarder :" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label style="-fx-font-weight: bold;" text="Sauvegarder votre exercice :" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets left="20.0" right="10.0" />
-               </GridPane.margin>
-            </TextField>
-            <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="162.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="SAUVEGARDER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#save" prefHeight="51.0" prefWidth="162.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="SAUVEGARDER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="318.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="ANNULER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <Button layoutX="10.0" layoutY="318.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="168.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="ANNULER" textFill="WHITE" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" graphicTextGap="20.0" layoutX="103.0" layoutY="201.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="187.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="PARCOURIR" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+            <Button alignment="CENTER" graphicTextGap="20.0" layoutX="103.0" layoutY="201.0" mnemonicParsing="false" onAction="#parcourir" prefHeight="37.0" prefWidth="187.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="PARCOURIR" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Downloads/Dossier%20bordel/open-folder.png" />
+                        <Image url="@../../images/open-folder.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <RadioButton mnemonicParsing="false" style="-fx-font-weight: bold;" text="Local" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin></RadioButton>
             <TextField layoutX="30.0" layoutY="189.0" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" right="10.0" />
                </GridPane.margin>
             </TextField>
-            <RadioButton mnemonicParsing="false" selected="true" style="-fx-font-weight: bold;" text="Réseau" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin></RadioButton>
          </children>
       </GridPane>
    </center>
