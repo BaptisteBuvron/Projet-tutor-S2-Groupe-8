@@ -43,7 +43,7 @@ public class EtudiantSauvegarderExerciceController implements Initializable {
             System.out.println(gson.toJson(MainEtudiant.etudiant));
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Enregistrement !");
-            alert.setHeaderText("Enregistrement de l'exericice.");
+            alert.setHeaderText("Enregistrement de l'exercice.");
             alert.setContentText("L'exercice a été enregistré.");
             alert.showAndWait();
             MainEtudiant.stage.setScene(MainEtudiant.menuPrincipal);

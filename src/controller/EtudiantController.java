@@ -63,10 +63,10 @@ public class EtudiantController implements Initializable {
     }
 
     @FXML
-    public void validerEssaie(){
+    public void validerEssaie() {
         String[] essais = saisie.getText().toLowerCase().split("\\s");
-        for (String essai: essais){
-            if (essai.length() >= 1){
+        for (String essai : essais) {
+            if (essai.length() >= 1) {
                 for (int i = 0; i < tab.length; i++) {   // on verifie si le mot a essayer est dans la phrase
                     // System.out.println(tab[i]);
 
@@ -77,13 +77,12 @@ public class EtudiantController implements Initializable {
                         tabOcult[i] = essai;
                         //foundWords++;
                         //System.out.println("nb de mots trouvé : " + foundWords);    // on affiche le nb de mot trouvé
-                    }
-                    else if (MainEtudiant.exercice instanceof ModeEntrainement){
-                        if((((ModeEntrainement) MainEtudiant.exercice).getLettresMini()) != null && essai.length()>=((ModeEntrainement) MainEtudiant.exercice).getLettresMini() && motActuel.startsWith(essai) && motActuel.length()>=4) {   // mais si ya un certain nb de lettre qui correspond au mot c'est bon aussi , c qd mm affiché
-                            String motIncomplet=essai;
-                            if (essai.length() > tabOcult[i].replace("#","").length()){
-                                for(int longmot=essai.length();longmot<motActuel.length();longmot++) {
-                                    motIncomplet+=MainEtudiant.exercice.getCaractereOcculation();
+                    } else if (MainEtudiant.exercice instanceof ModeEntrainement) {
+                        if ((((ModeEntrainement) MainEtudiant.exercice).getLettresMini()) != null && essai.length() >= ((ModeEntrainement) MainEtudiant.exercice).getLettresMini() && motActuel.startsWith(essai) && motActuel.length() >= 4) {   // mais si ya un certain nb de lettre qui correspond au mot c'est bon aussi , c qd mm affiché
+                            String motIncomplet = essai;
+                            if (essai.length() > tabOcult[i].replace("#", "").length()) {
+                                for (int longmot = essai.length(); longmot < motActuel.length(); longmot++) {
+                                    motIncomplet += MainEtudiant.exercice.getCaractereOcculation();
                                 }
                                 tabOcult[i] = motIncomplet;
                             }
@@ -94,14 +93,11 @@ public class EtudiantController implements Initializable {
                     }
 
 
-
-
-
                     //System.out.println(tabOcult[i]);
                 }
-                String textTotal= "";
+                String textTotal = "";
                 for (int i = 0; i < tab.length; i++) {
-                    textTotal+= tabOcult[i] + " ";
+                    textTotal += tabOcult[i] + " ";
                 }
                 texteCache.setText(textTotal);
                 saisie.setText("");
@@ -111,9 +107,7 @@ public class EtudiantController implements Initializable {
         }
 
 
-
     }
-
 
 
     public void openExercice(ActionEvent actionEvent) throws IOException, ClassNotFoundException, URISyntaxException {
@@ -131,17 +125,16 @@ public class EtudiantController implements Initializable {
         //Ouvrir la fichier et variable d'affectation du fichier choisi
         File selectedFile = fileChooser.showOpenDialog(MainEtudiant.stage);
 
-        try{
+        try {
             FileInputStream fileInt = new FileInputStream(selectedFile);
             ObjectInputStream objectInt = new ObjectInputStream(fileInt);
             Object exercice = objectInt.readObject();
             MainEtudiant.exercice = (Exercice) exercice;
             System.out.println("Success");
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("Erreur : le fichier n'a pas été trouvé.");
         }
-        if (MainEtudiant.exercice != null){
+        if (MainEtudiant.exercice != null) {
             initWindow();
 
         }
@@ -165,19 +158,18 @@ public class EtudiantController implements Initializable {
             timeSlider.setMax(mediaPlayer.getMedia().getDuration().toMinutes());
             timeSlider.setValue(0);
         });
-        if (MainEtudiant.exercice.getRessource() instanceof Audio){
+        if (MainEtudiant.exercice.getRessource() instanceof Audio) {
             System.out.println("audio");
-            if (((Audio) MainEtudiant.exercice.getRessource()).getImage() != null){
+            if (((Audio) MainEtudiant.exercice.getRessource()).getImage() != null) {
                 System.out.println("image");
                 File imageFile = writeByte(((Audio) MainEtudiant.exercice.getRessource()).getImage().getFileByte(), ((Audio) MainEtudiant.exercice.getRessource()).getImage().getFileName());
                 imageView.setVisible(true);
                 Image image = new javafx.scene.image.Image(imageFile.toURI().toString());
                 imageView.setImage(image);
-            }else {
+            } else {
                 imageView.setVisible(false);
             }
-        }
-        else {
+        } else {
             imageView.setVisible(false);
         }
 
@@ -203,24 +195,25 @@ public class EtudiantController implements Initializable {
 
     }
 
-    public void playVideo(ActionEvent actionEvent){
+    public void playVideo(ActionEvent actionEvent) {
         mediaPlayer.play();
     }
 
-    public void pauseVideo(ActionEvent actionEvent){
+    public void pauseVideo(ActionEvent actionEvent) {
         mediaPlayer.pause();
     }
 
     // Method which write the bytes into a file
     static File writeByte(byte[] bytes, String name) throws IOException {
-        //Ecrire le fichier dans le dossier dans les documents
-        String path = FileSystemView.getFileSystemView().getDefaultDirectory().getPath()+"\\ProjetTutoré\\"+ name;
-            try(FileOutputStream stream = new FileOutputStream(path)){
-                stream.write(bytes);
-                stream.close();
-                return new File(path);
 
-            }
+        //Ecrire le fichier dans le dossier dans les documents
+        String path = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\ProjetTutoré\\" + name;
+        try (FileOutputStream stream = new FileOutputStream(path)) {
+            stream.write(bytes);
+            stream.close();
+            return new File(path);
+
+        }
 
     }
 

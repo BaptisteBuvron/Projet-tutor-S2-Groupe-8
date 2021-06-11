@@ -334,13 +334,19 @@ public class EtudiantExerciceController implements Initializable {
 
     // Method which write the bytes into a file
     static File writeByte(byte[] bytes, String name) throws IOException {
+
+        //Créer le dossier dans les documents s'il n'existe pas.
+        File theDir = new File(FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\transcription");
+        if (!theDir.exists()) {
+            theDir.mkdirs();
+        }
+
         //Ecrire le fichier dans le dossier dans les documents
-        String path = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\ProjetTutoré\\" + name;
+        String path = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\transcription\\" + name;
         try (FileOutputStream stream = new FileOutputStream(path)) {
             stream.write(bytes);
             stream.close();
             return new File(path);
-
         }
 
     }

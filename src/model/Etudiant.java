@@ -1,11 +1,17 @@
 package model;
 
+
+import java.util.Objects;
+
 public class Etudiant {
     private String nomExercice;
     private String nom;
     private String textTrouve;
     private int motTrouve;
     private int totalMot;
+
+
+
 
     public Etudiant(String nom){
         this.nom = nom;
