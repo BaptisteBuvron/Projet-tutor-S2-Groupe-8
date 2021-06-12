@@ -20,33 +20,9 @@
           <Menu mnemonicParsing="false" text="Fichier">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#openExercice" text="Ouvrir un exercice" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Sauvegarder le travail" />
-                  <MenuItem disable="true" mnemonicParsing="false" text="Fermer l'exercice" />
-                  <RadioMenuItem mnemonicParsing="false" text="Quitter le logiciel" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#closeApplication" text="Quitter le logiciel" />
             </items>
           </Menu>
-          <Menu disable="true" mnemonicParsing="false" text="Solution">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Afficher la solution de l'exercice" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Fenêtre">
-            <items>
-              <MenuItem mnemonicParsing="false" text="640 x 480" />
-                  <MenuItem mnemonicParsing="false" text="800 x 600" />
-                  <MenuItem mnemonicParsing="false" text="Plein écran" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Options">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-              </items>
-            </Menu>
-            <Menu disable="true" mnemonicParsing="false" text="Aide">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Obtenir de l'aide pour l'exercice" />
-              </items>
-            </Menu>
             <Menu mnemonicParsing="false" text="A propos">
               <items>
                 <MenuItem mnemonicParsing="false" text="A propos du logiciel" />

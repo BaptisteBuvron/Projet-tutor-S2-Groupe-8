@@ -1,9 +1,10 @@
 package model;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Etudiant {
+public class Etudiant implements Serializable {
     private String nomExercice;
     private String nom;
     private String textTrouve;

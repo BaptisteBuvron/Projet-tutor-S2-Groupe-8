@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import model.Etudiant;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,6 +38,7 @@ public class EtudiantSaisirNomController implements Initializable {
             alert.setContentText("Vous n'avez pas saisie votre nom.");
             alert.showAndWait();
         }else {
+            MainEtudiant.etudiant = new Etudiant();
             MainEtudiant.etudiant.setNom(nomEtudiant.getText());
             MainEtudiant.stage.close();
             MainEtudiant.modeExercice.show();

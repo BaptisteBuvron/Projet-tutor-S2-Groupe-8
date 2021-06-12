@@ -11,6 +11,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -21,7 +22,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.etudiant.EtudiantExerciceController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.etudiant.EtudiantExerciceController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -29,10 +30,9 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Fichier">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Ouvrir un exercice" />
-                        <MenuItem mnemonicParsing="false" text="Sauvegarder le travail" />
-                        <MenuItem mnemonicParsing="false" text="Fermer l'exercice" />
-                        <MenuItem mnemonicParsing="false" text="Quitter l'application" />
+                        <MenuItem fx:id="saveExercice" mnemonicParsing="false" onAction="#saveExercice" text="Sauvegarder le travail" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeExercice" text="Fermer l'exercice" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Quitter l'application" />
                   </items>
                 </Menu>
                 <Menu fx:id="menuSolution" mnemonicParsing="false" text="Solution">
@@ -40,18 +40,6 @@
                     <MenuItem fx:id="menuItemSolution" mnemonicParsing="false" onAction="#afficherSolution" text="Afficher la solution de l'exercice" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Fenêtre">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="640 x 480" />
-                        <MenuItem mnemonicParsing="false" text="800 x 600" />
-                        <MenuItem mnemonicParsing="false" text="Plein écran" />
-                  </items>
-                </Menu>
-                  <Menu mnemonicParsing="false" text="Options">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
                   <Menu mnemonicParsing="false" text="Aide">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#afficherAide" text="Obtenir de l'aide pour l'exercice" />
@@ -122,19 +110,24 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="imageView" fitHeight="202.0" fitWidth="408.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true" visible="false" />
-                        <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="400.0">
+                        <ImageView fx:id="imageView" fitHeight="287.0" fitWidth="578.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                        <MediaView fx:id="mediaView" fitHeight="287.0" fitWidth="578.0">
                            <viewport>
                               <Rectangle2D />
                            </viewport>
                         </MediaView>
                      </children>
                   </AnchorPane>
-                  <Slider fx:id="timeSlider" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="play" mnemonicParsing="false" onAction="#playVideo" text="Play" />
-                        <Button fx:id="pause" mnemonicParsing="false" onAction="#pauseVideo" text="Pause" />
+                        <Button fx:id="play" mnemonicParsing="false" onAction="#playVideo" prefHeight="25.0" prefWidth="60.0" text="Play" />
+                        <Slider fx:id="timeSlider" prefHeight="14.0" prefWidth="263.0" />
+                        <ImageView fitHeight="18.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/volume.png" />
+                           </image>
+                        </ImageView>
+                        <Slider fx:id="volume" prefHeight="14.0" prefWidth="230.0" />
                      </children>
                   </HBox>
                </children>
@@ -204,7 +197,6 @@
                               <Label fx:id="totalMots" text="00" />
                            </children>
                         </HBox>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-background-color: #FFAC4A; -fx-font-weight: bold;" text="PAUSE" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                </children>
