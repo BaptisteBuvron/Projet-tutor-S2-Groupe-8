@@ -2,6 +2,7 @@ package Application;
 
 
 
+import model.Etudiant;
 import model.Exercice;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,11 @@ public class MainEnseignant extends Application {
     public static Scene option;
     public static Scene sauvegarder;
     public static Scene ecranFinal;
+    public static Scene selectionnerExercice;
+
+    public static Stage correction = new Stage();
+
+    public static Etudiant etudiant;
 
 
     public static Stage creationExercice = new Stage();
@@ -50,6 +56,10 @@ public class MainEnseignant extends Application {
         option = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteOption.fxml")));
         sauvegarder = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteSauvegarde.fxml")));
         ecranFinal = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteEcranFinal.fxml")));
+        selectionnerExercice = new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignantSelectionnerExercice.fxml")));
+
+        correction.setScene(new Scene(FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignant/EnseignanteCorrection.fxml"))));
+
 
         Parent root1 = FXMLLoader.load(getClass().getResource("/ressources/fxml/enseignanteDeprecated.fxml"));
         //Parent root2 = FXMLLoader.load(getClass().getResource("/ressources/fxml/scene2.fxml"));

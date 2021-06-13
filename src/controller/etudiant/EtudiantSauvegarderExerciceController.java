@@ -11,10 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,20 +29,26 @@ public class EtudiantSauvegarderExerciceController implements Initializable {
 
     public void save(ActionEvent event) throws IOException {
         if (selectedDirectory != null){
-            // 1. Java object to JSON file
 
-            File file = new File(selectedDirectory.getPath(), MainEtudiant.etudiant.getNom()+"-"+MainEtudiant.exercice.getName()+".json");
+            File newFile = new File(selectedDirectory, MainEtudiant.etudiant.getNom()+"-"+MainEtudiant.exercice.getName()+".travail");
+            FileOutputStream fileOut = new FileOutputStream(newFile);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(MainEtudiant.etudiant);
+            objectOut.close();
+
+           /* File file = new File(selectedDirectory.getPath(), MainEtudiant.etudiant.getNom()+"-"+MainEtudiant.exercice.getName()+".json");
             Writer writer = new FileWriter(file);
             Gson gson = new GsonBuilder().create();
             gson.toJson(MainEtudiant.etudiant, writer);
             writer.flush(); //flush data to file   <---
             writer.close(); //close write          <---
-            System.out.println(gson.toJson(MainEtudiant.etudiant));
+            System.out.println(gson.toJson(MainEtudiant.etudiant));*/
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Enregistrement !");
             alert.setHeaderText("Enregistrement de l'exercice.");
             alert.setContentText("L'exercice a été enregistré.");
             alert.showAndWait();
+            MainEtudiant.modeExercice.close();
             MainEtudiant.stage.setScene(MainEtudiant.menuPrincipal);
             MainEtudiant.stage.show();
         }

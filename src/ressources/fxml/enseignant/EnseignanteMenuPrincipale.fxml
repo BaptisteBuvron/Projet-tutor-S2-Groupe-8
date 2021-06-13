@@ -21,8 +21,8 @@
                 <Menu mnemonicParsing="false" text="Fichier">
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#createExercice" text="Créer un exercice" />
-                        <MenuItem mnemonicParsing="false" text="Ouvrir un exercice" />
-                        <MenuItem mnemonicParsing="false" text="Quitter l'application" />
+                        <MenuItem mnemonicParsing="false" onAction="#corriger" text="Corriger un exercice" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Quitter l'application" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Fenêtre">
@@ -54,12 +54,12 @@
    <center>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="validerButton" onAction="#createExercice" alignment="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="CREER" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="validerButton" alignment="CENTER" mnemonicParsing="false" onAction="#createExercice" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="CREER" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets left="25.0" right="25.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="validerButton1" alignment="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="OUVRIR" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="validerButton1" alignment="CENTER" mnemonicParsing="false" onAction="#corriger" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="CORRIGER" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets left="25.0" right="25.0" />
                </HBox.margin>
@@ -69,7 +69,7 @@
                   <Insets left="25.0" right="25.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="validerButton3" alignment="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="QUITTER" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="validerButton3" alignment="CENTER" mnemonicParsing="false" onAction="#closeApplication" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="QUITTER" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets left="25.0" right="25.0" />
                </HBox.margin>

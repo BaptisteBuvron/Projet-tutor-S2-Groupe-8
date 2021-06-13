@@ -1,16 +1,19 @@
 package model;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Etudiant {
+public class Etudiant implements Serializable {
     private String nomExercice;
     private String nom;
     private String textTrouve;
     private int motTrouve;
     private int totalMot;
 
+    private int time;
 
+    private int totalTime;
 
 
     public Etudiant(String nom){
@@ -59,5 +62,21 @@ public class Etudiant {
 
     public String getNomExercice() {
         return nomExercice;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(int totalTime) {
+        this.totalTime = totalTime;
     }
 }

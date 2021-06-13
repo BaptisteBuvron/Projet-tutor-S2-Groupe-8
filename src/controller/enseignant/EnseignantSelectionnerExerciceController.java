@@ -1,21 +1,19 @@
-package controller.etudiant;
+package controller.enseignant;
 
-import Application.MainEtudiant;
+import Application.MainEnseignant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
-import model.Exercice;
+import model.Etudiant;
 
 import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EtudiantSelectionnerExerciceController implements Initializable
-{
+public class EnseignantSelectionnerExerciceController implements Initializable {
 
     @FXML
     private TextField pathFile;
@@ -31,8 +29,8 @@ public class EtudiantSelectionnerExerciceController implements Initializable
     public void cancel(ActionEvent event){
         pathFile.setText("");
         selectedFile = null;
-        MainEtudiant.exercice = null;
-        MainEtudiant.stage.setScene(MainEtudiant.menuPrincipal);
+        MainEnseignant.etudiant = null;
+        MainEnseignant.stage.setScene(MainEnseignant.menuPrincipal);
     }
 
     @FXML
@@ -42,15 +40,15 @@ public class EtudiantSelectionnerExerciceController implements Initializable
 
         //Ajout des filtres d'extensions acceptées.
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Exercice", "*.exercice")
+                new FileChooser.ExtensionFilter("Travail", "*.travail")
         );
         pathFile.setText("");
 
         //Definition du titre de la fenêtre de choix de fichier
-        fileChooser.setTitle("Choisir votre exercice");
+        fileChooser.setTitle("Choisir votre exercice à corriger");
 
         //Ouvrir la fichier et variable d'affectation du fichier choisi
-        selectedFile = fileChooser.showOpenDialog(MainEtudiant.stage);
+        selectedFile = fileChooser.showOpenDialog(MainEnseignant.stage);
         if (selectedFile != null){
             pathFile.setText(selectedFile.getPath());
         }
@@ -63,8 +61,19 @@ public class EtudiantSelectionnerExerciceController implements Initializable
             try{
                 FileInputStream fileInt = new FileInputStream(selectedFile);
                 ObjectInputStream objectInt = new ObjectInputStream(fileInt);
-                Object exercice = objectInt.readObject();
-                MainEtudiant.exercice = (Exercice) exercice;
+                try {
+                    Object etudiant = objectInt.readObject();
+                    MainEnseignant.etudiant = (Etudiant) etudiant;
+
+                }
+                catch (InvalidClassException e){
+                    pathFile.setText("");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText("Le fichier n'est pas le travail d'un étudiant.");
+                    alert.setContentText("Veuillez sélectionner un autre exercice.");
+                    alert.showAndWait();
+                }
 
             }
             catch (FileNotFoundException | ClassNotFoundException e){
@@ -74,9 +83,9 @@ public class EtudiantSelectionnerExerciceController implements Initializable
                 alert.setContentText("Vérifier que le fichier " + selectedFile.getPath() + " existe.");
                 alert.showAndWait();
             }
-            if (MainEtudiant.exercice != null){
-                MainEtudiant.stage.setScene(MainEtudiant.saisirNom);
-                //TODO CHANGE SCENE, GO TO SELECT NAME OF THE STUDENT
+            if (MainEnseignant.etudiant != null){
+                MainEnseignant.stage.close();
+                MainEnseignant.correction.show();
 
             }
         }
@@ -84,12 +93,9 @@ public class EtudiantSelectionnerExerciceController implements Initializable
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Attention !");
             alert.setHeaderText("Exercice manquant.");
-            alert.setContentText("Vous n'avez pas importé d'exercice.");
+            alert.setContentText("Vous n'avez pas importé d'exercice à corriger.");
             alert.showAndWait();
         }
 
     }
-
-
-
 }

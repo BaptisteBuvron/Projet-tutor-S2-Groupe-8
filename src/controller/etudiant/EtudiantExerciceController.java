@@ -2,6 +2,8 @@ package controller.etudiant;
 
 import Application.MainEtudiant;
 import javafx.application.Platform;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -86,7 +88,20 @@ public class EtudiantExerciceController implements Initializable {
     @FXML
     private Label secondes;
 
+    @FXML
+    private Slider volume;
+
+    @FXML
+    private Button play;
+
+    @FXML
+    private MenuItem saveExercice;
+
+    private boolean isPlaying = false;
+
     private boolean timeFinish = false;
+
+    private Timer timer;
 
     private int nbMots;
 
@@ -127,7 +142,9 @@ public class EtudiantExerciceController implements Initializable {
             int timeAutorise = ((ModeEvaluation) MainEtudiant.exercice).getTempsAutorise();
             int totalSeconds = (int) ((int) (minutesTime * 60) + secondsTime);
             if (totalSeconds > timeAutorise) {
+                MainEtudiant.etudiant.setTime(totalSeconds);
                 timeFinish = true;
+                timer.cancel();
                 saveExercice();
             } else {
                 int timeRemain = timeAutorise - totalSeconds;
@@ -146,6 +163,7 @@ public class EtudiantExerciceController implements Initializable {
         MainEtudiant.etudiant.setTotalMot(Integer.parseInt(totalMots.getText()));
         MainEtudiant.etudiant.setTextTrouve(texteCache.getText());
         MainEtudiant.etudiant.setNomExercice(MainEtudiant.exercice.getName());
+        MainEtudiant.etudiant.setTotalTime(((ModeEvaluation)MainEtudiant.exercice).getTempsAutorise());
         mediaPlayer.stop();
         MainEtudiant.modeExercice.close();
         MainEtudiant.stage.setScene(MainEtudiant.enregister);
@@ -232,6 +250,7 @@ public class EtudiantExerciceController implements Initializable {
             affichageTempsReel.setVisible(false);
 
         } else if (MainEtudiant.exercice instanceof ModeEntrainement) {
+            saveExercice.setDisable(true);
             if (!((ModeEntrainement) MainEtudiant.exercice).isAffichageSolution()) {
                 menuItemSolution.setDisable(true);
                 menuSolution.setDisable(true);
@@ -242,7 +261,7 @@ public class EtudiantExerciceController implements Initializable {
             }
         }
         start = System.currentTimeMillis();
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -283,6 +302,15 @@ public class EtudiantExerciceController implements Initializable {
             timeSlider.setMax(mediaPlayer.getMedia().getDuration().toMinutes());
             timeSlider.setValue(0);
         });
+
+        volume.setValue(mediaPlayer.getVolume() *100);
+        volume.valueProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                mediaPlayer.setVolume(volume.getValue() / 100);
+            }
+        });
+
         if (MainEtudiant.exercice.getRessource() instanceof Audio) {
             System.out.println("audio");
             if (((Audio) MainEtudiant.exercice.getRessource()).getImage() != null) {
@@ -325,12 +353,17 @@ public class EtudiantExerciceController implements Initializable {
     }
 
     public void playVideo(ActionEvent actionEvent) {
-        mediaPlayer.play();
+        if (!isPlaying){
+            mediaPlayer.play();
+            isPlaying = true;
+            play.setText("Pause");
+        }else {
+            mediaPlayer.pause();
+            isPlaying = false;
+            play.setText("Play");
+        }
     }
 
-    public void pauseVideo(ActionEvent actionEvent) {
-        mediaPlayer.pause();
-    }
 
     // Method which write the bytes into a file
     static File writeByte(byte[] bytes, String name) throws IOException {
@@ -352,10 +385,16 @@ public class EtudiantExerciceController implements Initializable {
     }
 
 
-    public void shutdown() {
-        //Delete the video
-        System.out.println("au revoir");
+    public void closeApplication(){
+        Platform.exit();
+        System.exit(0);
     }
 
 
+    public void closeExercice(ActionEvent event) {
+        mediaPlayer.stop();
+        MainEtudiant.modeExercice.close();
+        MainEtudiant.stage.setScene(MainEtudiant.menuPrincipal);
+        MainEtudiant.stage.show();
+    }
 }
