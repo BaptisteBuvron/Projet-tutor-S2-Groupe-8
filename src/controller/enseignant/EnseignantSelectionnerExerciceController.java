@@ -61,8 +61,19 @@ public class EnseignantSelectionnerExerciceController implements Initializable {
             try{
                 FileInputStream fileInt = new FileInputStream(selectedFile);
                 ObjectInputStream objectInt = new ObjectInputStream(fileInt);
-                Object etudiant = objectInt.readObject();
-                MainEnseignant.etudiant = (Etudiant) etudiant;
+                try {
+                    Object etudiant = objectInt.readObject();
+                    MainEnseignant.etudiant = (Etudiant) etudiant;
+
+                }
+                catch (InvalidClassException e){
+                    pathFile.setText("");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Erreur");
+                    alert.setHeaderText("Le fichier n'est pas le travail d'un étudiant.");
+                    alert.setContentText("Veuillez sélectionner un autre exercice.");
+                    alert.showAndWait();
+                }
 
             }
             catch (FileNotFoundException | ClassNotFoundException e){
@@ -73,7 +84,8 @@ public class EnseignantSelectionnerExerciceController implements Initializable {
                 alert.showAndWait();
             }
             if (MainEnseignant.etudiant != null){
-                //TODO GO to
+                MainEnseignant.stage.close();
+                MainEnseignant.correction.show();
 
             }
         }

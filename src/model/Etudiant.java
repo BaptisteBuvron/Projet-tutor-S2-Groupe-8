@@ -11,7 +11,9 @@ public class Etudiant implements Serializable {
     private int motTrouve;
     private int totalMot;
 
+    private int time;
 
+    private int totalTime;
 
 
     public Etudiant(String nom){
@@ -60,5 +62,21 @@ public class Etudiant implements Serializable {
 
     public String getNomExercice() {
         return nomExercice;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(int totalTime) {
+        this.totalTime = totalTime;
     }
 }

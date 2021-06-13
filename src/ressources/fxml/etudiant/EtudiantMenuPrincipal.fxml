@@ -57,7 +57,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="TOP" focusTraversable="false" graphicTextGap="10.0" layoutX="210.0" layoutY="96.0" mnemonicParsing="false" prefHeight="204.0" prefWidth="171.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="QUITTER" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <Button alignment="CENTER" contentDisplay="TOP" focusTraversable="false" graphicTextGap="10.0" layoutX="210.0" layoutY="96.0" mnemonicParsing="false" onAction="#closeApplication" prefHeight="204.0" prefWidth="171.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="QUITTER" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <graphic>
                   <ImageView fitHeight="91.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                      <image>

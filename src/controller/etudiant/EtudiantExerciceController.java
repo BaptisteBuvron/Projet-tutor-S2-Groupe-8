@@ -142,6 +142,7 @@ public class EtudiantExerciceController implements Initializable {
             int timeAutorise = ((ModeEvaluation) MainEtudiant.exercice).getTempsAutorise();
             int totalSeconds = (int) ((int) (minutesTime * 60) + secondsTime);
             if (totalSeconds > timeAutorise) {
+                MainEtudiant.etudiant.setTime(totalSeconds);
                 timeFinish = true;
                 timer.cancel();
                 saveExercice();
@@ -162,6 +163,7 @@ public class EtudiantExerciceController implements Initializable {
         MainEtudiant.etudiant.setTotalMot(Integer.parseInt(totalMots.getText()));
         MainEtudiant.etudiant.setTextTrouve(texteCache.getText());
         MainEtudiant.etudiant.setNomExercice(MainEtudiant.exercice.getName());
+        MainEtudiant.etudiant.setTotalTime(((ModeEvaluation)MainEtudiant.exercice).getTempsAutorise());
         mediaPlayer.stop();
         MainEtudiant.modeExercice.close();
         MainEtudiant.stage.setScene(MainEtudiant.enregister);
