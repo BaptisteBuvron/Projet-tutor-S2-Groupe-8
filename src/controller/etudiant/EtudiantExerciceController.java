@@ -173,14 +173,29 @@ public class EtudiantExerciceController implements Initializable {
 
     @FXML
     public void validerEssaie() {
-        String[] essais = saisie.getText().toLowerCase().split("\\s");
+        String[] essais;
+        if (MainEtudiant.exercice.isSensibiliteCase()){
+            essais = saisie.getText().split("\\s");
+
+        }
+        else {
+            essais = saisie.getText().toLowerCase().split("\\s");
+        }
         for (String essai : essais) {
             if (essai.length() >= 1) {
                 for (int i = 0; i < tab.length; i++) {   // on verifie si le mot a essayer est dans la phrase
                     // System.out.println(tab[i]);
+                    String motActuel = "";
+                    String motOccultee  = "";
+                    if (MainEtudiant.exercice.isSensibiliteCase()){
+                        motActuel = String.valueOf(tab[i]);   // on met le mot de la phrase à verifier dans une nouvelle variable
+                        motOccultee = String.valueOf(tabOcult[i]);
+                    }
+                    else {
+                        motActuel = String.valueOf(tab[i]).toLowerCase();   // on met le mot de la phrase à verifier dans une nouvelle variable
+                        motOccultee = String.valueOf(tabOcult[i]).toLowerCase();
+                    }
 
-                    String motActuel = String.valueOf(tab[i]).toLowerCase();   // on met le mot de la phrase à verifier dans une nouvelle variable
-                    String motOccultee = String.valueOf(tabOcult[i]).toLowerCase();
                     //System.out.println(motActuel);
 
                     if (motActuel.equals(essai) && !motOccultee.equals(motActuel)) {  // si le le mot essayé est le mm alors il est remplacer dans la phrase occulté pr qu'on le voit
@@ -213,11 +228,9 @@ public class EtudiantExerciceController implements Initializable {
                     //System.out.println(tabOcult[i]);
                 }
                 String textTotal = "";
-                System.out.println(Arrays.toString(tab));
                 for (int i = 0; i < tab.length; i++) {
                     textTotal += tabOcult[i] + " ";
                 }
-                System.out.println("\n");
                 texteCache.setText(textTotal);
                 saisie.setText("");
             }
@@ -243,6 +256,8 @@ public class EtudiantExerciceController implements Initializable {
     }
 
     public void initWindow() throws IOException, URISyntaxException {
+
+
 
         if (MainEtudiant.exercice instanceof ModeEvaluation) {
             menuItemSolution.setDisable(true);
@@ -276,7 +291,6 @@ public class EtudiantExerciceController implements Initializable {
         tab = MainEtudiant.exercice.getRessource().getTranscription().split("(\\s|\\.|,|;|\"|\\)|\\(|'|:|\\[|`|]|\\{|})");
         nbMots = 0;
         for (int i = 0; i < tab.length; i++) {
-            System.out.println(tab[i]);
             if (!tab[i].equals("")) {
                 nbMots++;
             }
@@ -289,8 +303,6 @@ public class EtudiantExerciceController implements Initializable {
             textTotal += tabOcult[i] + " ";
         }
         texteCache.setText(textTotal);
-        System.out.println(Arrays.toString(tab));
-        System.out.println(Arrays.toString(tabOcult));
 
         consigne.setText(MainEtudiant.exercice.getConsigne());
         video = writeByte(MainEtudiant.exercice.getRessource().getFileByte(), MainEtudiant.exercice.getRessource().getFileName());
@@ -312,9 +324,8 @@ public class EtudiantExerciceController implements Initializable {
         });
 
         if (MainEtudiant.exercice.getRessource() instanceof Audio) {
-            System.out.println("audio");
+
             if (((Audio) MainEtudiant.exercice.getRessource()).getImage() != null) {
-                System.out.println("image");
                 File imageFile = writeByte(((Audio) MainEtudiant.exercice.getRessource()).getImage().getFileByte(), ((Audio) MainEtudiant.exercice.getRessource()).getImage().getFileName());
                 imageView.setVisible(true);
                 Image image = new javafx.scene.image.Image(imageFile.toURI().toString());
@@ -392,9 +403,18 @@ public class EtudiantExerciceController implements Initializable {
 
 
     public void closeExercice(ActionEvent event) {
+        timer.cancel();
         mediaPlayer.stop();
         MainEtudiant.modeExercice.close();
         MainEtudiant.stage.setScene(MainEtudiant.menuPrincipal);
         MainEtudiant.stage.show();
+    }
+
+    public void tutoriel(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Attention !");
+        alert.setHeaderText("Fonctionnalité en cours de développement.");
+        alert.setContentText("Le tutoriel n'est pas encore disponible. Veuillez patienter");
+        alert.showAndWait();
     }
 }

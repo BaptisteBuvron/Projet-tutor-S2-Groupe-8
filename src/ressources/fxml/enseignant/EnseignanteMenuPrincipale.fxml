@@ -7,8 +7,13 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -25,17 +30,10 @@
                         <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Quitter l'application" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Fenêtre">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="640 x 480" />
-                        <MenuItem mnemonicParsing="false" text="800 x 600" />
-                        <MenuItem mnemonicParsing="false" text="Plein écran" />
-                  </items>
-                </Menu>
                   <Menu mnemonicParsing="false" text="A propos">
                     <items>
                       <MenuItem mnemonicParsing="false" text="A propos du logiciel" />
-                        <RadioMenuItem mnemonicParsing="false" text="Tutoriel - Prise en main du logiciel" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#tutoriel" text="Tutoriel - Prise en main du logiciel" />
                     </items>
                   </Menu>
               </menus>
@@ -52,32 +50,86 @@
       </VBox>
    </top>
    <center>
-      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="validerButton" alignment="CENTER" mnemonicParsing="false" onAction="#createExercice" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="CREER" textAlignment="CENTER" textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="25.0" right="25.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="validerButton1" alignment="CENTER" mnemonicParsing="false" onAction="#corriger" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="CORRIGER" textAlignment="CENTER" textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="25.0" right="25.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="validerButton2" alignment="CENTER" ellipsisString="" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="TUTORIEL" textAlignment="CENTER" textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="25.0" right="25.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="validerButton3" alignment="CENTER" mnemonicParsing="false" onAction="#closeApplication" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="QUITTER" textAlignment="CENTER" textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="25.0" right="25.0" />
-               </HBox.margin>
-            </Button>
+            <GridPane prefHeight="71.0" prefWidth="600.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Reconstitution" textAlignment="CENTER">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Version enseignante" />
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </GridPane>
+            <HBox alignment="CENTER" prefHeight="194.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="validerButton" alignment="CENTER" mnemonicParsing="false" onAction="#createExercice" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="CREER EXERCICE" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="validerButton1" alignment="CENTER" mnemonicParsing="false" onAction="#corriger" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="CORRIGER TRAVAIL" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="validerButton2" alignment="CENTER" ellipsisString="" mnemonicParsing="false" onAction="#tutoriel" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="TUTORIEL" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="validerButton3" alignment="CENTER" mnemonicParsing="false" onAction="#closeApplication" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="QUITTER" textAlignment="CENTER" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </HBox>
+      </VBox>
    </center>
+   <bottom>
+      <GridPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="537.0" minWidth="10.0" prefWidth="401.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="396.0" minWidth="10.0" prefWidth="199.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <ImageView fitHeight="73.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+               <image>
+                  <Image url="@../../images/LOGO-INFO-v2.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="38.0" prefWidth="401.0" GridPane.valignment="BOTTOM">
+               <children>
+                  <Label text="Projet Tutoré Groupe 8" />
+                  <Label text="Baptiste Buvron, Johan Cherreau, Arthur Trouissier, Viveka Madomercandy" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin>
+            </VBox>
+         </children>
+      </GridPane>
+   </bottom>
 </BorderPane>

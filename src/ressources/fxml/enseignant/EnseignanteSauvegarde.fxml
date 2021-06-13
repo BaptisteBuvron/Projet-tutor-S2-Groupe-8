@@ -31,7 +31,7 @@
                   <Menu mnemonicParsing="false" text="A propos">
                     <items>
                       <MenuItem mnemonicParsing="false" text="A propos du logiciel" />
-                        <RadioMenuItem mnemonicParsing="false" text="Tutoriel - Prise en main du logiciel" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#tutoriel" text="Tutoriel - Prise en main du logiciel" />
                     </items>
                   </Menu>
               </menus>

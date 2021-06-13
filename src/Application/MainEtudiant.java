@@ -51,10 +51,11 @@ public class MainEtudiant extends Application {
 
         //Parent root1 = FXMLLoader.load(getClass().getResource("/ressources/fxml/etudiant/InterfaceEtudiantEntrainement.fxml"));
         //Parent root2 = FXMLLoader.load(getClass().getResource("/ressources/fxml/scene2.fxml"));
-        stage.setTitle("Transcription");
+        stage.setTitle("Reconstitution");
         //scene1 = new Scene(root1);
 
         stage.setScene(menuPrincipal);
+        stage.setResizable(false);
 
         // stage.setScene(scene1);
         stage.show();
