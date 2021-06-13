@@ -1,6 +1,7 @@
 package controller.enseignant;
 
 import Application.MainEnseignant;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +13,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,7 +35,7 @@ public class EnseignantSauvegardeController implements Initializable {
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(MainEnseignant.exercice);
             objectOut.close();
-            MainEnseignant.reset();
+            MainEnseignant.load();
             MainEnseignant.stage.setScene(MainEnseignant.ecranFinal);
         }
         else {
@@ -55,6 +55,19 @@ public class EnseignantSauvegardeController implements Initializable {
         selectedDirectory = null;
         selectedDirectory = directoryChooser.showDialog(MainEnseignant.stage);
         linkFolder.setText(selectedDirectory.toURI().getPath());
+    }
+
+    public void tutoriel(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Attention !");
+        alert.setHeaderText("Fonctionnalité en cours de développement.");
+        alert.setContentText("Le tutoriel n'est pas encore disponible. Veuillez patienter");
+        alert.showAndWait();
+    }
+
+    public void closeApplication(){
+        Platform.exit();
+        System.exit(0);
     }
 
     public void retour(ActionEvent event) {

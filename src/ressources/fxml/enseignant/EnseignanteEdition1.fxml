@@ -23,21 +23,14 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Fichier">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="Quitter l'application" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Fenêtre">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="640 x 480" />
-                        <MenuItem mnemonicParsing="false" text="800 x 600" />
-                        <MenuItem mnemonicParsing="false" text="Plein écran" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeApplication" text="Quitter l'application" />
                   </items>
                 </Menu>
 
                   <Menu mnemonicParsing="false" text="A propos">
                     <items>
                       <MenuItem mnemonicParsing="false" text="A propos du logiciel" />
-                        <RadioMenuItem mnemonicParsing="false" text="Tutoriel - Prise en main du logiciel" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#tutoriel" text="Tutoriel - Prise en main du logiciel" />
                     </items>
                   </Menu>
               </menus>

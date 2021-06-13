@@ -30,17 +30,10 @@
                         <MenuItem mnemonicParsing="false" text="Quitter l'application" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Fenêtre">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="640 x 480" />
-                        <MenuItem mnemonicParsing="false" text="800 x 600" />
-                        <MenuItem mnemonicParsing="false" text="Plein écran" />
-                  </items>
-                </Menu>
                   <Menu mnemonicParsing="false" text="A propos">
                     <items>
                       <MenuItem mnemonicParsing="false" text="A propos du logiciel" />
-                        <RadioMenuItem mnemonicParsing="false" text="Tutoriel - Prise en main du logiciel" />
+                        <RadioMenuItem mnemonicParsing="false" onAction="#tutoriel" text="Tutoriel - Prise en main du logiciel" />
                     </items>
                   </Menu>
               </menus>
@@ -59,7 +52,7 @@
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="550.0" prefWidth="775.0" spacing="25.0" BorderPane.alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#retour" style="-fx-background-color: #6B88EE; -fx-font-weight: bold;" text="Retour" textAlignment="CENTER" textFill="WHITE">
                      <graphic>
@@ -83,18 +76,6 @@
                            </font>
                         </Label>
                         <TextField fx:id="occultation" prefHeight="26.0" prefWidth="30.0" text="#" />
-                        <CheckBox mnemonicParsing="false" prefHeight="26.0" prefWidth="0.0" style="-fx-font-weight: bold;" visible="false" />
-                        <Label style="-fx-font-weight: bold;" text="Sensibilité à la case" visible="false">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <padding>
-                              <Insets left="5.0" right="100.0" />
-                           </padding>
-                        </Label>
                      </children>
                      <padding>
                         <Insets left="50.0" right="50.0" />
@@ -102,6 +83,22 @@
                      <VBox.margin>
                         <Insets bottom="25.0" />
                      </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox fx:id="sensibiliteCasse" mnemonicParsing="false" prefHeight="26.0" prefWidth="0.0" style="-fx-font-weight: bold;" />
+                        <Label style="-fx-font-weight: bold;" text="Sensibilité à la case">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" right="100.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="50.0" />
+                     </padding>
                   </HBox>
                   <HBox prefHeight="500.0">
                      <children>
@@ -204,17 +201,17 @@
                   </Button>
                </children>
                <BorderPane.margin>
-                  <Insets left="50.0" right="25.0" top="50.0" />
+                  <Insets left="50.0" right="25.0" top="20.0" />
                </BorderPane.margin>
                <padding>
-                  <Insets right="25.0" top="25.0" />
+                  <Insets right="25.0" />
                </padding>
             </VBox>
          </center>
       </BorderPane>
    </center>
    <bottom>
-      <VBox prefHeight="100.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="77.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
             <Label style="-fx-font-weight: bold;" text="Progresion :">
                <font>

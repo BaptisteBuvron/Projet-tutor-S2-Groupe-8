@@ -1,6 +1,7 @@
 package controller.enseignant;
 
 import Application.MainEnseignant;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -80,5 +81,18 @@ public class EnseignanteFichierMP3Controller implements Initializable {
 
     public void retour(ActionEvent event) {
         MainEnseignant.stage.setScene(MainEnseignant.fichierMP4);
+    }
+
+    public void tutoriel(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Attention !");
+        alert.setHeaderText("Fonctionnalité en cours de développement.");
+        alert.setContentText("Le tutoriel n'est pas encore disponible. Veuillez patienter");
+        alert.showAndWait();
+    }
+
+    public void closeApplication(){
+        Platform.exit();
+        System.exit(0);
     }
 }

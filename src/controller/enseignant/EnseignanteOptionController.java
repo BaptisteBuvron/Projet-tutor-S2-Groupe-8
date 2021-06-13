@@ -1,6 +1,7 @@
 package controller.enseignant;
 
 import Application.MainEnseignant;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,6 +39,9 @@ public class EnseignanteOptionController implements Initializable {
 
     @FXML
     private TextField occultation;
+
+    @FXML
+    private CheckBox sensibiliteCasse;
 
 
     @Override
@@ -109,6 +113,12 @@ public class EnseignanteOptionController implements Initializable {
                 MainEnseignant.exercice.setCaractereOcculation(copieExercice.getCaractereOcculation());
                 MainEnseignant.exercice.setRessource(copieExercice.getRessource());
                 MainEnseignant.exercice.setCaractereOcculation(occultation.getText());
+                if (sensibiliteCasse.isSelected()){
+                    MainEnseignant.exercice.setSensibiliteCase(true);
+                }
+                else {
+                    MainEnseignant.exercice.setSensibiliteCase(false);
+                }
                 MainEnseignant.stage.setScene(MainEnseignant.sauvegarder);
             }
 
@@ -119,5 +129,18 @@ public class EnseignanteOptionController implements Initializable {
     public void retour(ActionEvent event) {
         MainEnseignant.stage.setScene(MainEnseignant.edition2);
 
+    }
+
+    public void tutoriel(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Attention !");
+        alert.setHeaderText("Fonctionnalité en cours de développement.");
+        alert.setContentText("Le tutoriel n'est pas encore disponible. Veuillez patienter");
+        alert.showAndWait();
+    }
+
+    public void closeApplication(){
+        Platform.exit();
+        System.exit(0);
     }
 }
